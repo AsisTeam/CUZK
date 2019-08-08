@@ -1,0 +1,1008 @@
+{
+  "vysledek": {
+    "zprava": {
+      "_": "Po\u017eadovan\u00e1 akce byla \u00fasp\u011b\u0161n\u011b provedena.",
+      "kod": 0,
+      "uroven": "INFORMACE"
+    }
+  },
+  "stat": [
+    {
+      "kod": 470,
+      "nazev": "Maltsk\u00e1 republika"
+    },
+    {
+      "kod": 833,
+      "nazev": "Ostrov Man"
+    },
+    {
+      "kod": 504,
+      "nazev": "Marock\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 584,
+      "nazev": "Republika Marshallovy ostrovy"
+    },
+    {
+      "kod": 474,
+      "nazev": "Region Martinik"
+    },
+    {
+      "kod": 480,
+      "nazev": "Mauricijsk\u00e1 republika"
+    },
+    {
+      "kod": 478,
+      "nazev": "Maurit\u00e1nsk\u00e1 isl\u00e1msk\u00e1 republika"
+    },
+    {
+      "kod": 175,
+      "nazev": "Departementn\u00ed spole\u010denstv\u00ed Mayotte"
+    },
+    {
+      "kod": 581,
+      "nazev": "Men\u0161\u00ed odlehl\u00e9 ostrovy USA"
+    },
+    {
+      "kod": 484,
+      "nazev": "Spojen\u00e9 st\u00e1ty mexick\u00e9"
+    },
+    {
+      "kod": 583,
+      "nazev": "Federativn\u00ed st\u00e1ty Mikron\u00e9sie"
+    },
+    {
+      "kod": 498,
+      "nazev": "Moldavsk\u00e1 republika"
+    },
+    {
+      "kod": 492,
+      "nazev": "Monack\u00e9 kn\u00ed\u017eectv\u00ed"
+    },
+    {
+      "kod": 496,
+      "nazev": "Mongolsko"
+    },
+    {
+      "kod": 500,
+      "nazev": "Montserrat"
+    },
+    {
+      "kod": 508,
+      "nazev": "Mosambick\u00e1 republika"
+    },
+    {
+      "kod": 104,
+      "nazev": "Republika Myanmarsk\u00fd svaz"
+    },
+    {
+      "kod": 516,
+      "nazev": "Namibijsk\u00e1 republika"
+    },
+    {
+      "kod": 520,
+      "nazev": "Republika Nauru"
+    },
+    {
+      "kod": 276,
+      "nazev": "Spolkov\u00e1 republika N\u011bmecko"
+    },
+    {
+      "kod": 524,
+      "nazev": "Nep\u00e1lsk\u00e1 federativn\u00ed demokratick\u00e1 republika"
+    },
+    {
+      "kod": 562,
+      "nazev": "Nigersk\u00e1 republika"
+    },
+    {
+      "kod": 566,
+      "nazev": "Nigerijsk\u00e1 federativn\u00ed republika"
+    },
+    {
+      "kod": 558,
+      "nazev": "Nikaragujsk\u00e1 republika"
+    },
+    {
+      "kod": 570,
+      "nazev": "Niue"
+    },
+    {
+      "kod": 528,
+      "nazev": "Nizozemsko"
+    },
+    {
+      "kod": 574,
+      "nazev": "\u00dazem\u00ed Norfolk"
+    },
+    {
+      "kod": 578,
+      "nazev": "Norsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 540,
+      "nazev": "Nov\u00e1 Kaledonie"
+    },
+    {
+      "kod": 554,
+      "nazev": "Nov\u00fd Z\u00e9land"
+    },
+    {
+      "kod": 512,
+      "nazev": "Sultan\u00e1t Om\u00e1n"
+    },
+    {
+      "kod": 586,
+      "nazev": "P\u00e1kist\u00e1nsk\u00e1 isl\u00e1msk\u00e1 republika"
+    },
+    {
+      "kod": 585,
+      "nazev": "Republika Palau"
+    },
+    {
+      "kod": 275,
+      "nazev": "Palestinsk\u00e1 autonomn\u00ed \u00fazem\u00ed"
+    },
+    {
+      "kod": 591,
+      "nazev": "Panamsk\u00e1 republika"
+    },
+    {
+      "kod": 598,
+      "nazev": "Nez\u00e1visl\u00fd st\u00e1t Papua Nov\u00e1 Guinea"
+    },
+    {
+      "kod": 600,
+      "nazev": "Paraguaysk\u00e1 republika"
+    },
+    {
+      "kod": 604,
+      "nazev": "Peru\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 612,
+      "nazev": "Pitcairnovy ostrovy"
+    },
+    {
+      "kod": 384,
+      "nazev": "Republika Pob\u0159e\u017e\u00ed slonoviny"
+    },
+    {
+      "kod": 616,
+      "nazev": "Polsk\u00e1 republika"
+    },
+    {
+      "kod": 630,
+      "nazev": "Portorick\u00e9 spole\u010denstv\u00ed"
+    },
+    {
+      "kod": 620,
+      "nazev": "Portugalsk\u00e1 republika"
+    },
+    {
+      "kod": 40,
+      "nazev": "Rakousk\u00e1 republika"
+    },
+    {
+      "kod": 638,
+      "nazev": "Region R\u00e9union"
+    },
+    {
+      "kod": 226,
+      "nazev": "Republika Rovn\u00edkov\u00e1 Guinea"
+    },
+    {
+      "kod": 642,
+      "nazev": "Rumunsko"
+    },
+    {
+      "kod": 643,
+      "nazev": "Rusk\u00e1 federace"
+    },
+    {
+      "kod": 646,
+      "nazev": "Rwandsk\u00e1 republika"
+    },
+    {
+      "kod": 300,
+      "nazev": "\u0158eck\u00e1 republika"
+    },
+    {
+      "kod": 666,
+      "nazev": "\u00dazemn\u00ed spole\u010denstv\u00ed Saint Pierre a Miquelon"
+    },
+    {
+      "kod": 222,
+      "nazev": "Salvadorsk\u00e1 republika"
+    },
+    {
+      "kod": 882,
+      "nazev": "Nez\u00e1visl\u00fd st\u00e1t Samoa"
+    },
+    {
+      "kod": 674,
+      "nazev": "Republika San Marino"
+    },
+    {
+      "kod": 682,
+      "nazev": "Kr\u00e1lovstv\u00ed Sa\u00fadsk\u00e1 Ar\u00e1bie"
+    },
+    {
+      "kod": 686,
+      "nazev": "Senegalsk\u00e1 republika"
+    },
+    {
+      "kod": 580,
+      "nazev": "Spole\u010denstv\u00ed Severn\u00ed Mariany"
+    },
+    {
+      "kod": 690,
+      "nazev": "Seychelsk\u00e1 republika"
+    },
+    {
+      "kod": 694,
+      "nazev": "Republika Sierra Leone"
+    },
+    {
+      "kod": 702,
+      "nazev": "Singapursk\u00e1 republika"
+    },
+    {
+      "kod": 703,
+      "nazev": "Slovensk\u00e1 republika"
+    },
+    {
+      "kod": 705,
+      "nazev": "Slovinsk\u00e1 republika"
+    },
+    {
+      "kod": 706,
+      "nazev": "Som\u00e1lsk\u00e1 federativn\u00ed republika"
+    },
+    {
+      "kod": 784,
+      "nazev": "St\u00e1t Spojen\u00e9 arabsk\u00e9 emir\u00e1ty"
+    },
+    {
+      "kod": 840,
+      "nazev": "Spojen\u00e9 st\u00e1ty americk\u00e9"
+    },
+    {
+      "kod": 688,
+      "nazev": "Srbsk\u00e1 republika"
+    },
+    {
+      "kod": 140,
+      "nazev": "St\u0159edoafrick\u00e1 republika"
+    },
+    {
+      "kod": 729,
+      "nazev": "S\u00fad\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 740,
+      "nazev": "Surinamsk\u00e1 republika"
+    },
+    {
+      "kod": 654,
+      "nazev": "Svat\u00e1 Helena, Ascension a Tristan da Cunha"
+    },
+    {
+      "kod": 662,
+      "nazev": "Svat\u00e1 Lucie"
+    },
+    {
+      "kod": 652,
+      "nazev": "Spole\u010denstv\u00ed Svat\u00fd Bartolom\u011bj"
+    },
+    {
+      "kod": 659,
+      "nazev": "Federace Svat\u00fd Kry\u0161tof a Nevis"
+    },
+    {
+      "kod": 663,
+      "nazev": "Spole\u010denstv\u00ed Svat\u00fd Martin"
+    },
+    {
+      "kod": 534,
+      "nazev": "Svat\u00fd Martin (NL)"
+    },
+    {
+      "kod": 678,
+      "nazev": "Demokratick\u00e1 republika Svat\u00fd Tom\u00e1\u0161 a Princ\u016fv ostrov"
+    },
+    {
+      "kod": 670,
+      "nazev": "Svat\u00fd Vincenc a Grenadiny"
+    },
+    {
+      "kod": 748,
+      "nazev": "Svazijsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 760,
+      "nazev": "Syrsk\u00e1 arabsk\u00e1 republika"
+    },
+    {
+      "kod": 90,
+      "nazev": "\u0160alomounovy ostrovy"
+    },
+    {
+      "kod": 724,
+      "nazev": "\u0160pan\u011blsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 744,
+      "nazev": "\u0160picberky a Jan Mayen"
+    },
+    {
+      "kod": 144,
+      "nazev": "\u0160r\u00edlansk\u00e1 demokratick\u00e1 socialistick\u00e1 republika"
+    },
+    {
+      "kod": 752,
+      "nazev": "\u0160v\u00e9dsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 756,
+      "nazev": "\u0160v\u00fdcarsk\u00e1 konfederace"
+    },
+    {
+      "kod": 762,
+      "nazev": "Republika T\u00e1d\u017eikist\u00e1n"
+    },
+    {
+      "kod": 834,
+      "nazev": "Tanzansk\u00e1 sjednocen\u00e1 republika"
+    },
+    {
+      "kod": 764,
+      "nazev": "Thajsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 158,
+      "nazev": "\u010c\u00ednsk\u00e1 republika (Tchaj-wan)"
+    },
+    {
+      "kod": 768,
+      "nazev": "To\u017esk\u00e1 republika"
+    },
+    {
+      "kod": 772,
+      "nazev": "Tokelau"
+    },
+    {
+      "kod": 776,
+      "nazev": "Kr\u00e1lovstv\u00ed Tonga"
+    },
+    {
+      "kod": 780,
+      "nazev": "Republika Trinidad a Tobago"
+    },
+    {
+      "kod": 788,
+      "nazev": "Tunisk\u00e1 republika"
+    },
+    {
+      "kod": 792,
+      "nazev": "Tureck\u00e1 republika"
+    },
+    {
+      "kod": 795,
+      "nazev": "Turkmenist\u00e1n"
+    },
+    {
+      "kod": 796,
+      "nazev": "Ostrovy Turks a Caicos"
+    },
+    {
+      "kod": 798,
+      "nazev": "Tuvalu"
+    },
+    {
+      "kod": 800,
+      "nazev": "Ugandsk\u00e1 republika"
+    },
+    {
+      "kod": 804,
+      "nazev": "Ukrajina"
+    },
+    {
+      "kod": 858,
+      "nazev": "Uruguaysk\u00e1 v\u00fdchodn\u00ed republika"
+    },
+    {
+      "kod": 860,
+      "nazev": "Republika Uzbekist\u00e1n"
+    },
+    {
+      "kod": 162,
+      "nazev": "\u00dazem\u00ed V\u00e1no\u010dn\u00ed ostrov"
+    },
+    {
+      "kod": 548,
+      "nazev": "Republika Vanuatu"
+    },
+    {
+      "kod": 336,
+      "nazev": "Vatik\u00e1nsk\u00fd m\u011bstsk\u00fd st\u00e1t"
+    },
+    {
+      "kod": 826,
+      "nazev": "Spojen\u00e9 kr\u00e1lovstv\u00ed Velk\u00e9 Brit\u00e1nie a Severn\u00edho Irska"
+    },
+    {
+      "kod": 862,
+      "nazev": "Bol\u00edvarovsk\u00e1 republika Venezuela"
+    },
+    {
+      "kod": 704,
+      "nazev": "Vietnamsk\u00e1 socialistick\u00e1 republika"
+    },
+    {
+      "kod": 626,
+      "nazev": "Demokratick\u00e1 republika V\u00fdchodn\u00ed Timor"
+    },
+    {
+      "kod": 876,
+      "nazev": "Teritorium Wallisovy ostrovy a Futuna"
+    },
+    {
+      "kod": 894,
+      "nazev": "Zambijsk\u00e1 republika"
+    },
+    {
+      "kod": 732,
+      "nazev": "Saharsk\u00e1 arabsk\u00e1 demokratick\u00e1 republika"
+    },
+    {
+      "kod": 716,
+      "nazev": "Zimbabwsk\u00e1 republika"
+    },
+    {
+      "kod": 4,
+      "nazev": "Afgh\u00e1nsk\u00e1 isl\u00e1msk\u00e1 republika"
+    },
+    {
+      "kod": 248,
+      "nazev": "Provincie Alandy"
+    },
+    {
+      "kod": 8,
+      "nazev": "Alb\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 12,
+      "nazev": "Al\u017e\u00edrsk\u00e1 demokratick\u00e1 a lidov\u00e1 republika"
+    },
+    {
+      "kod": 16,
+      "nazev": "\u00dazem\u00ed Americk\u00e1 Samoa"
+    },
+    {
+      "kod": 850,
+      "nazev": "Americk\u00e9 Panensk\u00e9 ostrovy"
+    },
+    {
+      "kod": 20,
+      "nazev": "Andorrsk\u00e9 kn\u00ed\u017eectv\u00ed"
+    },
+    {
+      "kod": 24,
+      "nazev": "Angolsk\u00e1 republika"
+    },
+    {
+      "kod": 660,
+      "nazev": "Anguilla"
+    },
+    {
+      "kod": 10,
+      "nazev": "Antarktida"
+    },
+    {
+      "kod": 28,
+      "nazev": "Antigua a Barbuda"
+    },
+    {
+      "kod": 32,
+      "nazev": "Argentinsk\u00e1 republika"
+    },
+    {
+      "kod": 51,
+      "nazev": "Arm\u00e9nsk\u00e1 republika"
+    },
+    {
+      "kod": 533,
+      "nazev": "Aruba"
+    },
+    {
+      "kod": 36,
+      "nazev": "Australsk\u00e9 spole\u010denstv\u00ed"
+    },
+    {
+      "kod": 31,
+      "nazev": "\u00c1zerb\u00e1jd\u017e\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 44,
+      "nazev": "Bahamsk\u00e9 spole\u010denstv\u00ed"
+    },
+    {
+      "kod": 48,
+      "nazev": "Kr\u00e1lovstv\u00ed Bahrajn"
+    },
+    {
+      "kod": 50,
+      "nazev": "Banglad\u00e9\u0161sk\u00e1 lidov\u00e1 republika"
+    },
+    {
+      "kod": 52,
+      "nazev": "Barbados"
+    },
+    {
+      "kod": 56,
+      "nazev": "Belgick\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 84,
+      "nazev": "Belize"
+    },
+    {
+      "kod": 112,
+      "nazev": "B\u011blorusk\u00e1 republika"
+    },
+    {
+      "kod": 204,
+      "nazev": "Beninsk\u00e1 republika"
+    },
+    {
+      "kod": 60,
+      "nazev": "Bermudy"
+    },
+    {
+      "kod": 64,
+      "nazev": "Bh\u00fat\u00e1nsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 68,
+      "nazev": "Mnohon\u00e1rodn\u00ed st\u00e1t Bol\u00edvie"
+    },
+    {
+      "kod": 535,
+      "nazev": "Bonaire, Svat\u00fd Eustach a Saba"
+    },
+    {
+      "kod": 70,
+      "nazev": "Bosna a Hercegovina"
+    },
+    {
+      "kod": 72,
+      "nazev": "Botswansk\u00e1 republika"
+    },
+    {
+      "kod": 74,
+      "nazev": "Bouvet\u016fv ostrov"
+    },
+    {
+      "kod": 76,
+      "nazev": "Brazilsk\u00e1 federativn\u00ed republika"
+    },
+    {
+      "kod": 86,
+      "nazev": "Britsk\u00e9 \u00fazem\u00ed v Indick\u00e9m oce\u00e1nu"
+    },
+    {
+      "kod": 92,
+      "nazev": "Britsk\u00e9 Panensk\u00e9 ostrovy"
+    },
+    {
+      "kod": 96,
+      "nazev": "St\u00e1t Brunej Darussalam"
+    },
+    {
+      "kod": 100,
+      "nazev": "Bulharsk\u00e1 republika"
+    },
+    {
+      "kod": 854,
+      "nazev": "Burkina Faso"
+    },
+    {
+      "kod": 108,
+      "nazev": "Burundsk\u00e1 republika"
+    },
+    {
+      "kod": 184,
+      "nazev": "Cookovy ostrovy"
+    },
+    {
+      "kod": 531,
+      "nazev": "Cura\u00e7ao"
+    },
+    {
+      "kod": 148,
+      "nazev": "\u010cadsk\u00e1 republika"
+    },
+    {
+      "kod": 499,
+      "nazev": "\u010cern\u00e1 Hora"
+    },
+    {
+      "kod": 156,
+      "nazev": "\u010c\u00ednsk\u00e1 lidov\u00e1 republika"
+    },
+    {
+      "kod": 208,
+      "nazev": "D\u00e1nsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 180,
+      "nazev": "Demokratick\u00e1 republika Kongo"
+    },
+    {
+      "kod": 212,
+      "nazev": "Dominick\u00e9 spole\u010denstv\u00ed"
+    },
+    {
+      "kod": 214,
+      "nazev": "Dominik\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 262,
+      "nazev": "D\u017eibutsk\u00e1 republika"
+    },
+    {
+      "kod": 818,
+      "nazev": "Egyptsk\u00e1 arabsk\u00e1 republika"
+    },
+    {
+      "kod": 218,
+      "nazev": "Ekv\u00e1dorsk\u00e1 republika"
+    },
+    {
+      "kod": 232,
+      "nazev": "St\u00e1t Eritrea"
+    },
+    {
+      "kod": 233,
+      "nazev": "Estonsk\u00e1 republika"
+    },
+    {
+      "kod": 231,
+      "nazev": "Etiopsk\u00e1 federativn\u00ed demokratick\u00e1 republika"
+    },
+    {
+      "kod": 234,
+      "nazev": "Faersk\u00e9 ostrovy"
+    },
+    {
+      "kod": 238,
+      "nazev": "Falklandsk\u00e9 ostrovy"
+    },
+    {
+      "kod": 242,
+      "nazev": "Fid\u017eijsk\u00e1 republika"
+    },
+    {
+      "kod": 608,
+      "nazev": "Filip\u00ednsk\u00e1 republika"
+    },
+    {
+      "kod": 246,
+      "nazev": "Finsk\u00e1 republika"
+    },
+    {
+      "kod": 250,
+      "nazev": "Francouzsk\u00e1 republika"
+    },
+    {
+      "kod": 254,
+      "nazev": "Region Francouzsk\u00e1 Guyana"
+    },
+    {
+      "kod": 260,
+      "nazev": "Teritorium Francouzsk\u00e1 ji\u017en\u00ed a antarktick\u00e1 \u00fazem\u00ed"
+    },
+    {
+      "kod": 258,
+      "nazev": "Francouzsk\u00e1 Polyn\u00e9sie"
+    },
+    {
+      "kod": 266,
+      "nazev": "Gabonsk\u00e1 republika"
+    },
+    {
+      "kod": 304,
+      "nazev": "Gr\u00f3nsko"
+    },
+    {
+      "kod": 268,
+      "nazev": "Gruzie"
+    },
+    {
+      "kod": 312,
+      "nazev": "Region Guadeloupe"
+    },
+    {
+      "kod": 316,
+      "nazev": "Teritorium Guam"
+    },
+    {
+      "kod": 320,
+      "nazev": "Guatemalsk\u00e1 republika"
+    },
+    {
+      "kod": 831,
+      "nazev": "Bailiwick Guernsey"
+    },
+    {
+      "kod": 324,
+      "nazev": "Guinejsk\u00e1 republika"
+    },
+    {
+      "kod": 624,
+      "nazev": "Republika Guinea-Bissau"
+    },
+    {
+      "kod": 328,
+      "nazev": "Guyansk\u00e1 kooperativn\u00ed republika"
+    },
+    {
+      "kod": 332,
+      "nazev": "Republika Haiti"
+    },
+    {
+      "kod": 334,
+      "nazev": "Heard\u016fv ostrov a MacDonaldovy ostrovy"
+    },
+    {
+      "kod": 340,
+      "nazev": "Hondurask\u00e1 republika"
+    },
+    {
+      "kod": 344,
+      "nazev": "Zvl\u00e1\u0161tn\u00ed administrativn\u00ed oblast \u010c\u00ednsk\u00e9 lidov\u00e9 republiky Hongkong"
+    },
+    {
+      "kod": 152,
+      "nazev": "Chilsk\u00e1 republika"
+    },
+    {
+      "kod": 191,
+      "nazev": "Chorvatsk\u00e1 republika"
+    },
+    {
+      "kod": 356,
+      "nazev": "Indick\u00e1 republika"
+    },
+    {
+      "kod": 360,
+      "nazev": "Indon\u00e9sk\u00e1 republika"
+    },
+    {
+      "kod": 368,
+      "nazev": "Ir\u00e1ck\u00e1 republika"
+    },
+    {
+      "kod": 364,
+      "nazev": "\u00cdr\u00e1nsk\u00e1 isl\u00e1msk\u00e1 republika"
+    },
+    {
+      "kod": 372,
+      "nazev": "Irsko"
+    },
+    {
+      "kod": 352,
+      "nazev": "Islandsk\u00e1 republika"
+    },
+    {
+      "kod": 380,
+      "nazev": "Italsk\u00e1 republika"
+    },
+    {
+      "kod": 376,
+      "nazev": "St\u00e1t Izrael"
+    },
+    {
+      "kod": 388,
+      "nazev": "Jamajka"
+    },
+    {
+      "kod": 392,
+      "nazev": "Japonsko"
+    },
+    {
+      "kod": 887,
+      "nazev": "Jemensk\u00e1 republika"
+    },
+    {
+      "kod": 832,
+      "nazev": "Bailiwick Jersey"
+    },
+    {
+      "kod": 710,
+      "nazev": "Jihoafrick\u00e1 republika"
+    },
+    {
+      "kod": 239,
+      "nazev": "Ji\u017en\u00ed Georgie a Ji\u017en\u00ed Sandwichovy ostrovy"
+    },
+    {
+      "kod": 728,
+      "nazev": "Jihos\u00fad\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 400,
+      "nazev": "Jord\u00e1nsk\u00e9 h\u00e1\u0161imovsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 136,
+      "nazev": "Kajmansk\u00e9 ostrovy"
+    },
+    {
+      "kod": 116,
+      "nazev": "Kambod\u017esk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 120,
+      "nazev": "Kamerunsk\u00e1 republika"
+    },
+    {
+      "kod": 124,
+      "nazev": "Kanada"
+    },
+    {
+      "kod": 132,
+      "nazev": "Kapverdsk\u00e1 republika"
+    },
+    {
+      "kod": 634,
+      "nazev": "St\u00e1t Katar"
+    },
+    {
+      "kod": 398,
+      "nazev": "Republika Kazachst\u00e1n"
+    },
+    {
+      "kod": 404,
+      "nazev": "Ke\u0148sk\u00e1 republika"
+    },
+    {
+      "kod": 296,
+      "nazev": "Republika Kiribati"
+    },
+    {
+      "kod": 166,
+      "nazev": "\u00dazem\u00ed Kokosov\u00e9 (Keelingovy) ostrovy"
+    },
+    {
+      "kod": 170,
+      "nazev": "Kolumbijsk\u00e1 republika"
+    },
+    {
+      "kod": 174,
+      "nazev": "Komorsk\u00fd svaz"
+    },
+    {
+      "kod": 178,
+      "nazev": "Kon\u017esk\u00e1 republika"
+    },
+    {
+      "kod": 408,
+      "nazev": "Korejsk\u00e1 lidov\u011b demokratick\u00e1 republika"
+    },
+    {
+      "kod": 410,
+      "nazev": "Korejsk\u00e1 republika"
+    },
+    {
+      "kod": 95,
+      "nazev": "Kosovsk\u00e1 republika"
+    },
+    {
+      "kod": 188,
+      "nazev": "Kostarick\u00e1 republika"
+    },
+    {
+      "kod": 192,
+      "nazev": "Kub\u00e1nsk\u00e1 republika"
+    },
+    {
+      "kod": 414,
+      "nazev": "Kuvajtsk\u00fd st\u00e1t"
+    },
+    {
+      "kod": 196,
+      "nazev": "Kypersk\u00e1 republika"
+    },
+    {
+      "kod": 417,
+      "nazev": "Kyrgyzsk\u00e1 republika"
+    },
+    {
+      "kod": 418,
+      "nazev": "Laosk\u00e1 lidov\u011b demokratick\u00e1 republika"
+    },
+    {
+      "kod": 426,
+      "nazev": "Lesothsk\u00e9 kr\u00e1lovstv\u00ed"
+    },
+    {
+      "kod": 422,
+      "nazev": "Libanonsk\u00e1 republika"
+    },
+    {
+      "kod": 430,
+      "nazev": "Liberijsk\u00e1 republika"
+    },
+    {
+      "kod": 434,
+      "nazev": "Libyjsk\u00fd st\u00e1t"
+    },
+    {
+      "kod": 438,
+      "nazev": "Lichten\u0161tejnsk\u00e9 kn\u00ed\u017eectv\u00ed"
+    },
+    {
+      "kod": 440,
+      "nazev": "Litevsk\u00e1 republika"
+    },
+    {
+      "kod": 428,
+      "nazev": "Loty\u0161sk\u00e1 republika"
+    },
+    {
+      "kod": 442,
+      "nazev": "Lucembursk\u00e9 velkov\u00e9vodstv\u00ed"
+    },
+    {
+      "kod": 446,
+      "nazev": "Zvl\u00e1\u0161tn\u00ed administrativn\u00ed oblast \u010c\u00ednsk\u00e9 lidov\u00e9 republiky Macao"
+    },
+    {
+      "kod": 450,
+      "nazev": "Madagaskarsk\u00e1 republika"
+    },
+    {
+      "kod": 348,
+      "nazev": "Ma\u010farsko"
+    },
+    {
+      "kod": 807,
+      "nazev": "B\u00fdval\u00e1 jugosl\u00e1vsk\u00e1 republika Makedonie"
+    },
+    {
+      "kod": 458,
+      "nazev": "Malajsie"
+    },
+    {
+      "kod": 454,
+      "nazev": "Malawisk\u00e1 republika"
+    },
+    {
+      "kod": 462,
+      "nazev": "Maledivsk\u00e1 republika"
+    },
+    {
+      "kod": 466,
+      "nazev": "Republika Mali"
+    },
+    {
+      "kod": 270,
+      "nazev": "Gambijsk\u00e1 republika"
+    },
+    {
+      "kod": 288,
+      "nazev": "Ghansk\u00e1 republika"
+    },
+    {
+      "kod": 292,
+      "nazev": "Gibraltar"
+    },
+    {
+      "kod": 308,
+      "nazev": "Grenadsk\u00fd st\u00e1t"
+    }
+  ],
+  "posledniAktualizaceCiselniku": "2015-08-14"
+}

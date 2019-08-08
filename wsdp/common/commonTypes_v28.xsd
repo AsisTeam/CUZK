@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://katastr.cuzk.cz/commonTypes/v2.8" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://katastr.cuzk.cz/baseTypes/v2.8" targetNamespace="http://katastr.cuzk.cz/commonTypes/v2.8"
+	elementFormDefault="qualified" version="2.8.0">
+
+	<xs:import namespace="http://katastr.cuzk.cz/baseTypes/v2.8" schemaLocation="baseTypes_v28.xsd" />
+
+	<xs:complexType name="CastObceType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ části obce</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kod" type="bt:CastObceKodType" />
+			<xs:element name="nazev" type="bt:CastObceNazevType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="StavbaType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro stavbu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idStavby" type="bt:IdType" />
+			<xs:element name="stavbaTypKod" type="bt:TypStavbyKodType" />
+			<xs:element name="castObce" type="CastObceType" minOccurs="0" />
+			<xs:element name="cisloDomovni" type="bt:CisloDomovniType" minOccurs="0" />
+			<xs:element name="zpuVyKod" type="bt:ZpusobVyuzitiStavbyType" minOccurs="0" />
+			<xs:element name="parcelaIdentifikacni" type="ParcelaIdentType" minOccurs="0" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0" />
+			<xs:element name="jeSoucasti" type="bt:StavbaSoucastiType" minOccurs="0" />
+			<xs:element name="pravoStavby" type="PravoStavbyIdentType" minOccurs="0" />
+			<xs:element name="docasnaStavba" type="bt:AnoNeType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PravoStavbyType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro právo stavby</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idPravoStavby" type="bt:IdType" />
+			<xs:element name="datumKoncePlatnosti" type="xs:date" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0" />
+			<xs:element name="ucelPravaStavbyList" type="UcelPravaStavbyListType" />
+			<xs:element name="pouzeIdentParcela" type="bt:AnoNeType">
+				<xs:annotation>
+					<xs:documentation>Definuje obsah elementu parcela. A - obsahuje jen
+						identifikující parcelu, N - obsahuje všechny parcely práva stavby
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parcely" type="ParcelyList" maxOccurs="1" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Seznam všech parcel práva stavby.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UcelPravaStavbyType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro účel práva stavby
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kod" type="bt:UcelPravaStavbyKodType" />
+			<xs:element name="nazev" type="bt:UcelPravaStavbyNazevType" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="KatuzeType">
+		<xs:annotation>
+			<xs:documentation>Katastrální území</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kod" type="bt:KatastrUzemiKodType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="nazev" type="bt:KatastrUzemiNazevType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="JednotkaType">
+		<xs:annotation>
+			<xs:documentation>Obecný typ pro jednotku</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idJednotky" type="bt:IdType" />
+			<xs:element name="stavba" type="StavbaIdentType" />
+			<xs:element name="typJedKod" type="bt:JednotkaTypJednotkyKodType" />
+			<xs:element name="cislo" type="bt:JednotkaCisloType" />
+			<xs:element name="zpuVyKod" type="bt:JednotkaZpusobVyuzitiKodType" minOccurs="0" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ParcelaType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ parcely</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idParcely" type="bt:IdType" />
+			<xs:element name="parcelaType" type="bt:ParcelaTypeType" />
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="katuzePuv" type="bt:KatastrUzemiKodType" minOccurs="0" />
+			<xs:element name="kmenoveCislo" type="bt:ParcelaKmenoveCisloType" />
+			<xs:element name="poddeleniCisla" type="bt:ParcelaPoddeleniType" minOccurs="0" />
+			<xs:element name="dil" type="bt:ParcelaDilType" minOccurs="0" />
+			<xs:element name="zpUrVyKod" type="bt:ParcelaZpusobUrceniVymeryKodType" minOccurs="0" />
+			<xs:element name="typZE" type="bt:ParcelaTypZEType" minOccurs="0" />
+			<xs:element name="drupozKod" type="bt:ParcelaDruhPozemkuKodType" minOccurs="0" />
+			<xs:element name="zpuvypaKod" type="bt:ParcelaZpusobVyuzitiKodType" minOccurs="0" />
+			<xs:element name="typ" type="bt:ParcelaTypType" minOccurs="0" />
+			<xs:element name="vymera" type="bt:ParcelaVymeraType" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType" />
+			<xs:element name="stavba" type="StavbaIdentType" minOccurs="0" />
+			<xs:element name="stavbaSoucastiParcely" type="bt:AnoNeType" />
+			<xs:element name="pravoStavby" type="PravoStavbyIdentType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniPomocneType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeni" type="bt:IdType" />
+			<xs:element name="cisloPodani" type="bt:RizeniCisloPodaniType" />
+			<xs:element name="createDate" type="bt:RizeniCreateDateType" />
+			<xs:element name="praresKod" type="bt:RizeniPraresKodType" />
+			<xs:element name="rizeniTyp" type="bt:TypRizeniKodType" />
+			<xs:element name="poradoveCislo" type="bt:RizeniPoradoveCisloType" />
+			<xs:element name="rok" type="bt:RizeniRokType" />
+			<xs:element name="noveRizeniId" type="bt:IdType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="RizeniType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ pro řízení v evidenci KN
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idRizeni" type="bt:IdType" />
+			<xs:element name="praresKod" type="bt:RizeniPraresKodType" />
+			<xs:element name="rizeniTyp" type="bt:TypRizeniKodType" />
+			<xs:element name="poradoveCislo" type="bt:RizeniPoradoveCisloType" />
+			<xs:element name="rok" type="bt:RizeniRokType" />
+			<xs:element name="extIdentifikace" type="bt:ExtIdentifikaceRizeniType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="ZpravaServeruType">
+		<xs:annotation>
+			<xs:documentation>Zpráva ze serveru</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="bt:TextType">
+				<xs:attribute name="kod" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="uroven" use="required" type="bt:ZpravaServeruTypeType" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseInfoType">
+		<xs:annotation>
+			<xs:documentation>Standardní hlavička odpovědi</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="zprava" type="ZpravaServeruType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PrilohaWSType">
+		<xs:annotation>
+			<xs:documentation>Příloha webové služby SOAP</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="idPrilohy" type="bt:IdPrilohyWSType" use="required" />
+		<xs:attribute name="jmenoSouboru" type="bt:NazevSouboruType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="OSBaseType">
+		<xs:annotation>
+			<xs:documentation>Základní typ pro oprávněný subjekt - OFO, OPO,
+				partneři
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idOS" type="bt:IdType" minOccurs="1" />
+			<xs:element name="nazev" type="bt:NazevFirmyType" minOccurs="0" />
+			<xs:element name="ico" type="bt:IcoType" minOccurs="0" />
+			<xs:element name="doplnekIco" type="bt:DoplnekIcoType" minOccurs="0" />
+			<xs:element name="prijmeni" type="bt:PrijmeniType" minOccurs="0" />
+			<xs:element name="jmeno" type="bt:JmenoType" minOccurs="0" />
+			<xs:element name="titulPred" type="bt:TitulPredJmenemType" minOccurs="0" />
+			<xs:element name="titulZa" type="bt:TitulZaJmenemType" minOccurs="0" />
+			<xs:element name="rcZkracene" type="bt:RcType" minOccurs="0" />
+			<xs:element name="ulice" type="bt:UliceNazevType" minOccurs="0" />
+			<xs:element name="cisloDomovni" type="bt:CisloDomovniType" minOccurs="0" />
+			<xs:element name="cisloOrientacni" type="bt:CisloOrientacniType" minOccurs="0" />
+			<xs:element name="castObceNazev" type="bt:CastObceNazevType" minOccurs="0" />
+			<xs:element name="obecNazev" type="bt:ObecNazevType" minOccurs="0" />
+			<xs:element name="mestskaCastNazev" type="bt:MestskaCastNazevType" minOccurs="0" />
+			<xs:element name="mestskyObvodNazev" type="bt:MestskyObvodNazevType" minOccurs="0" />
+			<xs:element name="psc" type="bt:PSCType" minOccurs="0" />
+			<xs:element name="vlastnikTyp" type="bt:TypVlastnikaType" />
+			<xs:element name="typCpCe" type="bt:CpCeType" minOccurs="0" />
+			<xs:element name="statNazev" type="bt:StatNazevType" minOccurs="0" />
+			<xs:element name="okresNazev" type="bt:OkresNazevType" minOccurs="0" />
+			<xs:element name="charOSType" type="bt:CharakteristikaOSKodType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="OSType">
+		<xs:annotation>
+			<xs:documentation>Rozšířený typ pro oprávněný subjekt s uvedenim OS -
+				partnerů
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="OSBaseType">
+				<xs:sequence>
+					<xs:element name="partner1" type="PartnerType" minOccurs="0" />
+					<xs:element name="partner2" type="PartnerType" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PartnerType">
+		<xs:annotation>
+			<xs:documentation>Typ pro element s OS - partner</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OS" type="OSBaseType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VlastnictviType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ vlastnictví</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idVlastnictvi" type="bt:IdType" />
+			<xs:element name="lvId" type="bt:IdType" />
+			<xs:element name="podilCitatel" type="bt:VlastnictviPodilCitatelType" />
+			<xs:element name="podilJmenovatel" type="bt:VlastnictviPodilJmenovatelType" />
+			<xs:element name="typPravnihoVztahuKod" type="bt:TypPravnihoVztahuKodType" />
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" />
+			<xs:element name="lvCislo" type="bt:LVCisloType" />
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="osId" type="bt:IdType" />
+				<!-- Změna pro přídatné spoluvlastnictví -->
+				<xs:element name="parcelaId" type="bt:IdType">
+					<xs:annotation>
+						<xs:documentation>Parcela přídatného spoluvlastnictví
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="budovaId" type="bt:IdType">
+					<xs:annotation>
+						<xs:documentation>Budova přídatného spoluvlastnictví
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="jednotkaId" type="bt:IdType">
+					<xs:annotation>
+						<xs:documentation>Jednotka přídatného spoluvlastnictví
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="pravoStavbyId" type="bt:IdType">
+					<xs:annotation>
+						<xs:documentation>Právo stavby přídatného spoluvlastnictví
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="IdParcelyListType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ seznamu identifikátorů parcel
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idParcely" type="bt:IdType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdStavbyListType">
+		<xs:sequence>
+			<xs:element name="idStavby" type="bt:IdType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdJednotkyListType">
+		<xs:sequence>
+			<xs:element name="idJednotky" type="bt:IdType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="IdPravaStavbyListType">
+		<xs:sequence>
+			<xs:element name="idPravaStavby" type="bt:IdType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KatastralniUzemiListType">
+		<xs:sequence>
+			<xs:element name="ku" type="KatuzeType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UcelPravaStavbyListType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ seznamu účelů práv stavby
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ucelPravaStavby" type="UcelPravaStavbyType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KatuzeKodListType">
+		<xs:annotation>
+			<xs:documentation>Komplexní typ list kódů katastrálního uzemí
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BankovniSpojeniType">
+		<xs:annotation>
+			<xs:documentation>Bankovní spojení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="predcisli" type="bt:PredcisliBankUctuType" minOccurs="0" />
+			<xs:element name="cisloUctu" type="bt:CisloBankUctuType" />
+			<xs:element name="kodBanky" type="bt:KodBankyType" />
+			<xs:element name="typUctu" type="bt:TypBankUctuType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParcelaIdentType">
+		<xs:annotation>
+			<xs:documentation>Identifikační údaje percely</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idParcely" type="bt:IdType" minOccurs="1" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0"/>
+			<xs:element name="katuzeKod" type="bt:KatastrUzemiKodType" minOccurs="1" />
+			<xs:element name="kmenoveCislo" type="bt:ParcelaKmenoveCisloType" minOccurs="1" />
+			<xs:element name="parcelaType" type="bt:ParcelaTypeType" minOccurs="1" />
+			<xs:element name="druhCislovaniPar" type="bt:DruhCislovaniParType" minOccurs="1" />
+			<xs:element name="poddeleniCisla" type="bt:ParcelaPoddeleniType" minOccurs="0" />
+			<xs:element name="katuzePuv" type="bt:KatastrUzemiKodType" minOccurs="0" />
+			<xs:element name="typZE" type="bt:ParcelaTypZEType" minOccurs="0" />
+			<xs:element name="dil" type="bt:ParcelaDilType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StavbaIdentType">
+		<xs:annotation>
+			<xs:documentation>Identifikační údaje stavby.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idStavby" type="bt:IdType" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0"/>
+			<xs:element name="typStavbyKod" type="bt:TypStavbyKodType" />
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="castObceKod" type="bt:CastObceKodType" minOccurs="1" />
+					<xs:element name="cisloDomovni" type="bt:CisloDomovniType" minOccurs="1" />
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="parcelaIdentifikacni" type="ParcelaIdentType">
+						<xs:annotation>
+							<xs:documentation>Identifikace parcely u stavby typu 3 (budova bez čísla popisného nebo evidenčního), 4 (rozestavěná budova), 5 (poschoďová garáž) nebo 6 (vodní dílo)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JednotkaIdentType">
+		<xs:annotation>
+			<xs:documentation>Identifikační údaje jednotky.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idJednotky" type="bt:IdType" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0"/>
+			<xs:element name="cislo" type="bt:JednotkaCisloType" minOccurs="0" />
+			<xs:element name="stavba" type="StavbaIdentType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PravoStavbyIdentType">
+		<xs:annotation>
+			<xs:documentation>Identifikační údaje práva stavby.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="idPravoStavby" type="bt:IdType" minOccurs="1" />
+			<xs:element name="lvId" type="bt:IdType" minOccurs="0"/>
+			<xs:element name="parcelaIdentifikacni" type="ParcelaIdentType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParcelyList">
+		<xs:sequence>
+			<xs:element name="parcela" type="ParcelaIdentType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ListinaType">
+		<xs:annotation>
+			<xs:documentation>Identifikační údaje listiny.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="listinaId" type="bt:IdType" />
+			<xs:element name="oznaceniListiny" type="xs:string" />
+			<xs:element name="datumVyhotoveni" type="xs:dateTime" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
