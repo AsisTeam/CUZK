@@ -1,0 +1,19 @@
+{
+  "vysledek": {
+    "zprava": {
+      "_": "Požadovaná akce byla úspěšně provedena.",
+      "kod": 0,
+      "uroven": "INFORMACE"
+    }
+  },
+  "reportList": {
+    "report": {
+      "id": 85901972011,
+      "nazev": "Výpis z katastru",
+      "datumPozadavku": "2019-08-09T15:45:38",
+      "datumSpusteni": "2019-08-09T15:45:38",
+      "stav": "čeká",
+      "format": "pdf"
+    }
+  }
+}

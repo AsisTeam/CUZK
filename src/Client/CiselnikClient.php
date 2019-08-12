@@ -15,7 +15,10 @@ final class CiselnikClient extends AbstractCUZKClient
 		parent::__construct($client);
 	}
 
-	public function listCountries()
+	/**
+	 * @return mixed[]
+	 */
+	public function listCountries(): array
 	{
 		$data = $this->call(self::SEZNAM_STATU, []);
 

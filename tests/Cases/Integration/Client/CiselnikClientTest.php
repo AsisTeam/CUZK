@@ -2,9 +2,10 @@
 
 namespace AsisTeam\CUZK\Tests\Cases\Integration\Client;
 
+use AsisTeam\CUZK\Client\AbstractCUZKClientFactory;
 use AsisTeam\CUZK\Client\CiselnikClientFactory;
-use AsisTeam\CUZK\Client\SestavyClientFactory;
 use Tester\Assert;
+use Tester\Environment;
 use Tester\TestCase;
 
 require_once __DIR__ . '/../../../bootstrap.php';
@@ -12,9 +13,19 @@ require_once __DIR__ . '/../../../bootstrap.php';
 class CiselnikClientTest extends TestCase
 {
 
-	public function testTrue(): void
+	public function setUp(): void
 	{
-		$cc = (new CiselnikClientFactory(SestavyClientFactory::TRIAL_USER, SestavyClientFactory::TRIAL_PASS, true))->create();
+		Environment::skip('Integration tests - run it manually please.');
+	}
+
+	public function testListCountries(): void
+	{
+		$cc = (new CiselnikClientFactory(
+			AbstractCUZKClientFactory::TRIAL_USER,
+			AbstractCUZKClientFactory::TRIAL_PASS,
+			true
+		))->create();
+
 		$countries = $cc->listCountries();
 		Assert::true(count($countries) > 240); // on 8.8.219 there was 249 countries in the World
 	}

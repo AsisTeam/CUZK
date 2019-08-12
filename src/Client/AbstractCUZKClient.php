@@ -11,6 +11,9 @@ use stdClass;
 abstract class AbstractCUZKClient
 {
 
+	private const SUCCESS_CODE = 0;
+	private const LEVEL_INFO = 'INFORMACE';
+
 	/** @var SoapClient */
 	protected $client;
 
@@ -20,23 +23,17 @@ abstract class AbstractCUZKClient
 	}
 
 	/**
-	 * @param mixed[] $data
-	 *
+	 * @param mixed[] $params
 	 * @return mixed
 	 */
-	protected function call(string $method, array $data): stdClass
+	protected function call(string $method, array $params): stdClass
 	{
-		$json = json_encode($data);
-
-		if ($json === false) {
-			throw new RequestException(sprintf('Could not convert request input data to json. Error: %s',
-				json_last_error_msg()));
-		}
-
 		try {
-			$response = $this->client->__soapCall($method, [$json]);
+			$response = $this->client->__soapCall($method, [$params]);
 			// TODO - remove (used for logging responses)
-			// echo(json_encode($response)); die();
+//			if ($method === 'vratSestavu') {
+//				 echo(json_encode($response)); die();
+//			}
 		} catch (SoapFault $e) {
 			throw new RequestException($e->getMessage(), 0, $e);
 		}
@@ -58,7 +55,13 @@ abstract class AbstractCUZKClient
 
 	private function assertResult(stdClass $msg): void
 	{
-		if (!property_exists($msg, 'kod') || $msg->kod !== 0) {
+		if (!property_exists($msg, 'kod') || !property_exists($msg, 'uroven')) {
+			throw new ResponseException(
+				sprintf('Malformed response received. "kod" and/or "uroven" fields are missing: %s', json_encode($msg))
+			);
+		}
+
+		if ($msg->kod !== self::SUCCESS_CODE && $msg->uroven !== self::LEVEL_INFO) {
 			throw new ResponseException(
 				sprintf('Failure response received. "vysledek" field = %s', json_encode($msg))
 			);
@@ -66,11 +69,11 @@ abstract class AbstractCUZKClient
 	}
 
 	/**
-	 * @param mixed $data
-	 *
+	 * @param mixed[] $data
 	 * @return mixed[]
 	 */
-	protected function toArray($data): array {
+	protected function toArray(array $data): array
+	{
 		$arr = json_decode(json_encode($data), true);
 
 		if ($arr === null) {

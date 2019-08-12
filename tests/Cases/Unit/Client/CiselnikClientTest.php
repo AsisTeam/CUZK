@@ -13,7 +13,7 @@ class CiselnikClientTest extends TestCase
 
 	public function testListCountries(): void
 	{
-		$cc = new CiselnikClient(SoapMockTestHelper::createSoapMock("seznamStatu", [], 'seznamStatu.json'));
+		$cc = new CiselnikClient(SoapMockTestHelper::createSoapMock('seznamStatu', [], 'seznamStatu.json'));
 		Assert::count(249, $cc->listCountries());
 	}
 

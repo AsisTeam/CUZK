@@ -11,7 +11,6 @@ final class SoapMockTestHelper
 
 	/**
 	 * @param mixed[] $expectedData
-	 *
 	 * @return SoapClient|MockInterface
 	 */
 	public static function createSoapMock(string $expectedMethod, array $expectedData, string $outputFile)
@@ -23,7 +22,8 @@ final class SoapMockTestHelper
 					return false;
 				}
 
-				if ($expectedData !== [] && $data !== $expectedData) {
+				// compare both arrays
+				if ($expectedData !== [] && serialize($data) !== serialize($expectedData)) {
 					return false;
 				}
 
@@ -32,4 +32,5 @@ final class SoapMockTestHelper
 			->andReturn(json_decode(file_get_contents(sprintf('%s/data/%s', __DIR__, $outputFile))))
 			->getMock();
 	}
+
 }

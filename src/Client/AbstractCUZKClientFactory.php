@@ -4,8 +4,8 @@ namespace AsisTeam\CUZK\Client;
 
 use AsisTeam\CUZK\Exception\LogicalException;
 use SoapClient;
-use SoapHeader;
 use SoapFault;
+use SoapHeader;
 use SoapVar;
 use stdClass;
 
@@ -16,6 +16,11 @@ abstract class AbstractCUZKClientFactory
 
 	public const TRIAL_USER = 'WSTEST';
 	public const TRIAL_PASS = 'WSHESLO';
+
+	//	public const TRIAL_USER_OVEROVATEL = 'WSTESTO';
+	//	public const TRIAL_PASS_OVEROVATEL = 'WSHESLOO';
+	//	public const TRIAL_USER_BEZUPLATNY = 'WSTESTB';
+	//	public const TRIAL_PASS_BEZUPLATNY = 'WSHESLOB';
 
 	private const WSDL_TRIAL_PATH = __DIR__ . '/../../wsdp/trial/';
 	private const WSDL_PROD_PATH  = __DIR__ . '/../../wsdp/prod/';
@@ -50,24 +55,23 @@ abstract class AbstractCUZKClientFactory
 
 			return $soap;
 		} catch (SoapFault $e) {
-			throw new LogicalException("Cannot instantiate LV soap client", $e->getCode(), $e);
+			throw new LogicalException('Cannot instantiate LV soap client', $e->getCode(), $e);
 		}
 	}
 
 	private function createHeader(string $user, string $pass): SoapHeader
 	{
 		$auth           = new stdClass();
-		$auth->Username = new SoapVar($user, XSD_STRING, "", self::WSS_NS, "", self::WSS_NS);
-		$auth->Password = new SoapVar($pass, XSD_STRING, "", self::WSS_NS, "", self::WSS_NS);
+		$auth->Username = new SoapVar($user, XSD_STRING, '', self::WSS_NS, '', self::WSS_NS);
+		$auth->Password = new SoapVar($pass, XSD_STRING, '', self::WSS_NS, '', self::WSS_NS);
 
-		$username_token                = new stdClass();
-		$username_token->UsernameToken = new SoapVar($auth, SOAP_ENC_OBJECT, "", self::WSS_NS, 'UsernameToken',
-			self::WSS_NS);
+		$ut                = new stdClass();
+		$ut->UsernameToken = new SoapVar($auth, SOAP_ENC_OBJECT, '', self::WSS_NS, 'UsernameToken', self::WSS_NS);
 
 		$security = new SoapVar(
-			new SoapVar($username_token, SOAP_ENC_OBJECT, "", self::WSS_NS, 'UsernameToken', self::WSS_NS),
+			new SoapVar($ut, SOAP_ENC_OBJECT, '', self::WSS_NS, 'UsernameToken', self::WSS_NS),
 			SOAP_ENC_OBJECT,
-			"",
+			'',
 			self::WSS_NS,
 			'Security',
 			self::WSS_NS
