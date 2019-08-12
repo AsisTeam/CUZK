@@ -63,6 +63,8 @@ echo 'The charged price for generating the reports was: ' . $report->getPrice();
 file_put_contents($report->getId().'.pdf', $report->getContent());
 ```
 
+Please see the `SestavyCLient` unit/integration test for more examples of client usage.
+
 ## Nette
 
 You can setup package as Nette compiler extension using neon config

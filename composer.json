@@ -15,7 +15,8 @@
     "ext-soap": "*",
     "php": ">= 7.1",
     "nette/di": "^2.4",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-dom": "*"
   },
   "require-dev": {
     "ninjify/qa": "^0.8.0",
