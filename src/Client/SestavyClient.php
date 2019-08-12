@@ -13,8 +13,8 @@ final class SestavyClient extends AbstractCUZKClient
 {
 
 	private const REPORT_FIND_BY_ID = 'vratSestavu';
-	//	private const REPORT_FIND_ALL   = 'seznamSestav';
-	//	private const REPORT_DELETE     = 'smazSestavu';
+	private const REPORT_FIND_ALL   = 'seznamSestav';
+	private const REPORT_DELETE     = 'smazSestavu';
 
 	private const LIST_VLASTNICTVI_GENERATE_BY_LV_ID              = 'generujLV';
 	private const LIST_VLASTNICTVI_GENERATE_BY_CODE_AND_LV_NUMBER = 'generujLVZjednodusene';
@@ -33,7 +33,17 @@ final class SestavyClient extends AbstractCUZKClient
 		parent::__construct($client);
 	}
 
-	public function getReportById(int $id): Report
+	/**
+	 * @return Report[]
+	 */
+	public function getReports(): array
+	{
+		$resp    = $this->call(self::REPORT_FIND_ALL, []);
+
+		return $this->extractReports($resp);
+	}
+
+	public function getReport(int $id): Report
 	{
 		$resp    = $this->call(self::REPORT_FIND_BY_ID, ['idSestavy' => $id]);
 		$reports = $this->extractReports($resp);
@@ -43,6 +53,11 @@ final class SestavyClient extends AbstractCUZKClient
 		}
 
 		return $reports[0];
+	}
+
+	public function deleteReport(int $id): void
+	{
+		$this->call(self::REPORT_DELETE, ['idSestavy' => $id]);
 	}
 
 	/**

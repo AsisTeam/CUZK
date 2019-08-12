@@ -16,10 +16,10 @@
   "reportList": {
     "report": {
       "id": 85902085011,
-      "nazev": "V\u00fdpis z katastru",
+      "nazev": "Výpis z katastru",
       "datumPozadavku": "2019-08-12T10:29:14",
       "datumSpusteni": "2019-08-12T10:29:15",
-      "stav": "vytv\u00e1\u0159\u00ed se",
+      "stav": "vytváří se",
       "format": "pdf"
     }
   }

@@ -24,16 +24,11 @@ abstract class AbstractCUZKClient
 
 	/**
 	 * @param mixed[] $params
-	 * @return mixed
 	 */
 	protected function call(string $method, array $params): stdClass
 	{
 		try {
 			$response = $this->client->__soapCall($method, [$params]);
-			// TODO - remove (used for logging responses)
-//			if ($method === 'vratSestavu') {
-//				 echo(json_encode($response)); die();
-//			}
 		} catch (SoapFault $e) {
 			throw new RequestException($e->getMessage(), 0, $e);
 		}
@@ -74,7 +69,9 @@ abstract class AbstractCUZKClient
 	 */
 	protected function toArray(array $data): array
 	{
-		$arr = json_decode(json_encode($data), true);
+		/** @var string $str */
+		$str = json_encode($data);
+		$arr = json_decode($str, true);
 
 		if ($arr === null) {
 			throw new ResponseException(sprintf('Could not convert response data to json. Error: %s', json_last_error_msg()));

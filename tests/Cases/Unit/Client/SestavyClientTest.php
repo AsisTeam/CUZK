@@ -119,6 +119,69 @@ class SestavyClientTest extends TestCase
 		Assert::count(1, $reports);
 	}
 
+	public function testGetReportNotCompleted(): void
+	{
+		$sc = new SestavyClient(
+			SoapMockTestHelper::createSoapMock(
+				'vratSestavu',
+				[0 => ['idSestavy' => 85902085011]],
+				'vratSestavu_processing.json'
+			)
+		);
+
+		$r = $sc->getReport(85902085011);
+		Assert::equal(85902085011, $r->getId());
+		Assert::equal('Výpis z katastru', $r->getName());
+		Assert::equal('vytváří se', $r->getStatus());
+		Assert::equal(Report::FORMAT_PDF, $r->getFormat());
+		Assert::equal('', $r->getContent());
+	}
+
+	public function testGetReportCompleted(): void
+	{
+		$sc = new SestavyClient(
+			SoapMockTestHelper::createSoapMock(
+				'vratSestavu',
+				[0 => ['idSestavy' => 85902092011]],
+				'vratSestavu_completed.json'
+			)
+		);
+
+		$r = $sc->getReport(85902092011);
+		Assert::equal(85902092011, $r->getId());
+		Assert::equal('Výpis z katastru', $r->getName());
+		Assert::equal('zaúčtován', $r->getStatus());
+		Assert::equal(Report::FORMAT_PDF, $r->getFormat());
+		Assert::equal(3, $r->getPages());
+		Assert::equal(3, $r->getUnits());
+		Assert::equal('150', $r->getPrice());
+		Assert::false($r->isElectronicMark());
+		Assert::true($r->getDateRequested() <= $r->getDateStarted());
+		Assert::true($r->getDateStarted() <= $r->getDateCreated());
+		Assert::contains('PDF-1.4', $r->getContent());
+	}
+
+	public function testGetReports(): void
+	{
+		$sc = new SestavyClient(SoapMockTestHelper::createSoapMock('seznamSestav', [], 'seznamSestav.json'));
+		$rs = $sc->getReports();
+
+		Assert::count(182, $rs);
+	}
+
+	public function testDeleteReport(): void
+	{
+		$sc = new SestavyClient(
+			SoapMockTestHelper::createSoapMock(
+				'smazSestavu',
+				[0 => ['idSestavy' => 85902092011]],
+				'smazSestavu.json'
+			)
+		);
+		$sc->deleteReport(85902092011);
+		Assert::true(true); // app didnt crashed before
+	}
+
 }
 
 (new SestavyClientTest())->run();

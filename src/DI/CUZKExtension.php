@@ -9,7 +9,7 @@ use Nette\DI\CompilerExtension;
 final class CUZKExtension extends CompilerExtension
 {
 
-	/** @var string[] */
+	/** @var mixed[] */
 	public $defaults = [
 		'user' => '',
 		'pass' => '',

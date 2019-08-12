@@ -59,7 +59,7 @@ class SestavyClientTest extends TestCase
 		Assert::count(0, $reports);
 	}
 
-	public function testGetReportById(): void
+	public function testGetReport(): void
 	{
 		if ($this->generated === 0) {
 			Environment::skip('testGetReportById: Cannot get, nothing previously generated');
@@ -68,10 +68,30 @@ class SestavyClientTest extends TestCase
 		// zZzZz - wait some time for the proper end of async generate call
 		sleep(15);
 
-		$r = $this->client->getReportById($this->generated);
+		$r = $this->client->getReport($this->generated);
 		Assert::equal($this->generated, $r->getId());
 		Assert::equal('zaúčtován', $r->getStatus());
 		Assert::notEqual('', $r->getContent());
+	}
+
+	public function testGetReports(): void
+	{
+		$rs = $this->client->getReports();
+		Assert::true(count($rs) > 0);
+
+		$found = false;
+		foreach ($rs as $r) {
+			if ($r->getId() === $this->generated) {
+				$found = true;
+			}
+		}
+		Assert::true($found);
+	}
+
+	public function testDeleteReport(): void
+	{
+		$this->client->deleteReport($this->generated);
+		Assert::true(true); // app didnt crashed before
 	}
 
 }
