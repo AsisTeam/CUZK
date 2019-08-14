@@ -25,7 +25,7 @@ Once the generateXYZ is called, the simple `report` object is returned.
 Only few of `report` object properties are filled with data, but `ID` is always filled.
 You may then use this `ID` for querying this specific report and it's content once generated. 
 
-### Available calls:
+### Available API calls:
 - getReports(): []Report
 - getReport(int $id): Report
 - deleteReport(int $id): void
@@ -45,22 +45,42 @@ Param Notes:
 - __date__: Datum, ke kterému bude sestava vygenerována.
 - __appendXml__: V případě, že formát je PDF, operace vrátí současně sestavu i v XML formátu bez dalšího poplatku.
 
+### List Vlastnictvi entity
+
+If you requested to generate the `xml` version of LV. You may pass the received content to `ListVlastnictvi` entity.
+It validates the received `xml` data structure and wraps the content by methods you may use to read the file.
+
 ### Usage
 
 ```php
 use AsisTeam\CUZK\Client\LVClientFactory;
+use AsisTeam\CUZK\Entity\ListVlastnictvi;
 
 // 'WSTEST' and 'WSHESLO' are trial credentials
 $client = (new CiselnikClientFactory('WSTEST', 'WSHESLO', true)->create();
-$reportRequest = $client->generateByLvId('807841306')
+// generates both the PDF and XML versions
+$reportRequests = $client->generateByLvId('807841306', null, true)
+// report request should contain 2 items
+
 
 sleep(10); // wait some time for CUZK server to generate the pdf
 
-$report = $client->getReport($reportRequest->getId());
-echo 'The charged price for generating the reports was: ' . $report->getPrice();
+// save the pdf file
+$reportPdf = $client->getReport($reportRequests[0]->getId());
+echo 'The charged price for generating the reports was: ' . $reportPdf->getPrice();
+file_put_contents($reportPdf->getId().'.pdf', $reportPdf->getContent());
 
-// save the received data to pdf file
-file_put_contents($report->getId().'.pdf', $report->getContent());
+// read the xml
+$reportXml = $client->getReport($reportRequests[1]->getId());
+$lv = ListVlastnictvi($reportXml->getContent());
+echo 'Vytvoreno:' . $lv->vytvoreno();
+foreach ($i => $lv->texty() as $txt) {
+    echo 'strana ' . $i . "\n";
+    echo  $txt->zahlavi->cisloLv();
+    //
+    // ...
+    //
+}
 ```
 
 Please see the `SestavyCLient` unit/integration test for more examples of client usage.

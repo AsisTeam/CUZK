@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" attributeFormDefault="unqualified" elementFormDefault="qualified">
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
-  <xs:include schemaLocation="base.xsd"/> 
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig_core_schema.xsd"/>
+  <xs:include schemaLocation="VypisZKatastruNemovitosti_base.xsd"/>
   <!-- Verze: 1.16 -->
   <xs:element name="VypisZKatastruNemovitosti">
     <xs:complexType>
@@ -407,7 +407,7 @@
                                       <xs:element name="PAR_IDENT" type="ParcelaUpType"/>
                                     </xs:sequence>
                                   </xs:complexType>
-                                </xs:element>                                
+                                </xs:element>
                                 <xs:element name="JEDNOTKY" minOccurs="0">
                                   <xs:complexType>
                                     <xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -883,7 +883,7 @@
 			                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
 			                                      <xs:element name="JPV_POPIS">
 			                                        <xs:complexType>
-			                                          <xs:sequence>                                            
+			                                          <xs:sequence>
 			                                            <xs:element name="JPV_RIZENI" minOccurs="0">
 			                                              <xs:complexType>
 			                                                <xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -987,8 +987,8 @@
                         </xs:sequence>
                       </xs:complexType>
                       <xs:unique name="UniqueSekceListSekce">
-                        <xs:selector xpath="SEKCE_LIST" /> 
-                        <xs:field xpath="@SEKCE" /> 
+                        <xs:selector xpath="SEKCE_LIST" />
+                        <xs:field xpath="@SEKCE" />
                       </xs:unique>
                     </xs:element>
                     <xs:element name="UPOZORNENI1" type="xs:string"/>
@@ -1032,7 +1032,7 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
-        </xs:element>        
+        </xs:element>
         <xs:element name="PLATNOST" type="xs:string"/>
         <xs:element name="BEZPL_PRISTUP" type="xs:string"/>
         <xs:element name="VYHOTOVENO" type="xs:string"/>

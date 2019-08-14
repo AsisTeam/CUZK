@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!-- Verze: 1.03 -->
+  <!-- positive integer or empty -->
+  <xs:simpleType name="ID_TYPE">
+    <xs:union memberTypes="xs:positiveInteger">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="TYP_JEDNOTKY_POPIS_TYPE">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="ZPUSOB_VYUZITI_JEDNOTKY_POPIS_TYPE">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="AdresaCpCeType">
+    <xs:annotation>
+      <xs:documentation>1 - cislo popisne, 2 - cislo evidencni.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AdresaType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="adresni_misto" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="nazev_ulice" type="xs:string" minOccurs="0"/>
+      <xs:element name="cp_ce" type="AdresaCpCeType" minOccurs="0"/>
+      <xs:element name="cislo_domovni" type="xs:string" minOccurs="0"/>
+      <xs:element name="cislo_orientacni" type="xs:string" minOccurs="0"/>
+      <xs:element name="cast_obce" type="xs:string" minOccurs="0"/>
+      <xs:element name="obec" type="xs:string" minOccurs="0"/>
+      <xs:element name="mestska_cast" type="xs:string" minOccurs="0"/>
+      <xs:element name="mestsky_obvod" type="xs:string" minOccurs="0"/>
+      <xs:element name="psc" type="xs:string" minOccurs="0"/>
+      <xs:element name="dod_posta" type="xs:string" minOccurs="0"/>
+      <xs:element name="stat" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NazevListType">
+    <xs:sequence minOccurs="0">
+      <xs:element name="tlist" type="xs:string"/>
+      <xs:element name="dalsi_udaje" type="xs:string"/>
+      <xs:element name="por_cis_zhot" type="xs:string"/>
+      <xs:element name="popis" type="xs:string"/>
+      <xs:element name="vystav_txt" type="xs:string"/>
+      <xs:element name="prav_moc_txt" type="xs:string"/>
+      <xs:element name="podani_txt" type="xs:string"/>
+      <xs:element name="vykonatelnost_txt" type="xs:string"/>
+      <xs:element name="podani_z_txt" type="xs:string"/>
+      <xs:element name="zplatneni_txt" type="xs:string"/>
+      <xs:element name="prares_nazev" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParcelaUpType">
+    <xs:sequence>
+      <xs:element name="parcela" type="ParcelaType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParcelaType">
+    <xs:sequence>
+      <xs:element name="id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="zkratka" type="xs:string" minOccurs="0"/>
+      <xs:element name="druh_cis" type="xs:string" minOccurs="0"/>
+      <xs:element name="par_cis" type="xs:string" minOccurs="0"/>
+      <xs:element name="podd_cis" type="xs:string" minOccurs="0"/>
+      <xs:element name="dil_parcely" type="xs:byte" minOccurs="0"/>
+      <xs:element name="tel_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="cislo_tel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ku_nazev" type="xs:string" minOccurs="0"/>
+      <xs:element name="nazev_puv" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StavbaUpType">
+    <xs:sequence>
+      <xs:element name="stavba" type="StavbaType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StavbaType">
+    <xs:sequence>
+      <xs:element name="id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="caobce" type="xs:string" minOccurs="0"/>
+      <xs:element name="typbud_zkr" type="xs:string" minOccurs="0"/>
+      <xs:element name="cisla_domovni" type="xs:string" minOccurs="0"/>
+      <xs:element name="vyuziti_zkr" type="xs:string" minOccurs="0"/>
+      <xs:element name="tel_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="bez_lv" type="xs:string" minOccurs="0"/>
+      <xs:element name="cislo_tel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ku_nazev" type="xs:string" minOccurs="0"/>
+      <xs:element name="docasna" type="xs:string" minOccurs="0"/>
+      <xs:element name="par_ident" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="parcela" type="ParcelaType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JednotkaUpType">
+    <xs:sequence>
+      <xs:element name="jednotka" type="JednotkaType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JednotkaType">
+    <xs:sequence>
+      <xs:element name="id" type="ID_TYPE"/>
+      <xs:element name="caobce" type="xs:string" minOccurs="0"/>
+      <xs:element name="cp_ident" type="xs:string" minOccurs="0"/>
+      <xs:element name="jed_ident" type="xs:string" minOccurs="0"/>
+      <xs:element name="tel_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="cislo_tel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ku_nazev" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PravoStavbyUpType">
+    <xs:sequence>
+      <xs:element name="pravo_stavby" type="PravoStavbyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PravoStavbyType">
+    <xs:sequence>
+      <xs:element name="id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="tel_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="parcela" type="ParcelaType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="cislo_tel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ku_nazev" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RizeniType">
+    <xs:sequence minOccurs="0">
+      <xs:element name="typriz_kod" type="xs:string"/>
+      <xs:element name="poradove_cislo" type="xs:unsignedInt"/>
+      <xs:element name="rok" type="xs:unsignedShort"/>
+      <xs:element name="prares_kod" type="xs:unsignedShort"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CharakteristikaOSKodType">
+    <xs:annotation>
+      <xs:documentation>Kod charakteristiky opravneneho subjektu</xs:documentation>
+    </xs:annotation>  
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1"></xs:minInclusive>
+      <xs:maxInclusive value="99"></xs:maxInclusive>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CharakteristikaType">
+    <xs:annotation>
+      <xs:documentation>Charakteristika opravneneho subjektu z ciselniku</xs:documentation>
+    </xs:annotation>  
+    <xs:sequence minOccurs="0">
+	  <xs:element name="kod" type="CharakteristikaOSKodType"/>
+	  <xs:element name="zkratka" type="xs:string"/>
+	  <xs:element name="zkratka_alv" type="xs:string"/>
+	</xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CHAROS_TYPE">
+    <xs:annotation>
+      <xs:documentation>Uvozujici element pro sestavy, kde se pouziva nadrizeny blok pro char_os (dano logikou sestavy)</xs:documentation>
+    </xs:annotation>  
+  	<xs:sequence>
+  		<xs:element name="char_os" minOccurs="0" maxOccurs="1" type="CharakteristikaType" />
+  	</xs:sequence>
+  </xs:complexType>    
+  <xs:complexType name="OpsubIdentType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="id" type="ID_TYPE"/>
+        <xs:element name="rc6" type="xs:string"/>
+        <xs:element name="rc7" type="xs:string"/>
+        <xs:element name="ico" type="xs:string"/>
+        <xs:element name="ico_doplnek" type="xs:string"/>
+        <xs:element name="char_os" type="CharakteristikaType"/>		
+        <xs:element name="bsm1_id" type="ID_TYPE" minOccurs="0"/>
+        <xs:element name="bsm2_id" type="ID_TYPE" minOccurs="0"/>
+        <xs:element name="prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="titul_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="titul_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="nazev" type="xs:string" minOccurs="0"/>
+        <xs:element name="adresa" type="AdresaType" minOccurs="0"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VlaIdentType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="oprav_subjekt" type="OpsubIdentType"/>
+        <xs:element name="parcela" type="ParcelaType"/>
+        <xs:element name="stavba" type="StavbaType"/>
+        <xs:element name="jednotka" type="JednotkaType"/>
+        <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>  
+  <xs:complexType name="OpsubIdentPoType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="opravnena_po" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="id" type="ID_TYPE"/>
+                <xs:element name="rc6" type="xs:string" minOccurs="0"/>
+                <xs:element name="rc7" type="xs:string" minOccurs="0"/>
+                <xs:element name="ico" type="xs:string" minOccurs="0"/>
+                <xs:element name="ico_doplnek" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm1_id" type="ID_TYPE" minOccurs="0"/>
+                <xs:element name="bsm2_id" type="ID_TYPE" minOccurs="0"/>
+                <xs:element name="prijmeni" type="xs:string" minOccurs="0"/>
+                <xs:element name="jmeno" type="xs:string" minOccurs="0"/>
+                <xs:element name="titul_pred" type="xs:string" minOccurs="0"/>
+                <xs:element name="titul_za" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm1_prijmeni" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm1_jmeno" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm1_pred" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm1_za" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm2_prijmeni" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm2_jmeno" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm2_pred" type="xs:string" minOccurs="0"/>
+                <xs:element name="bsm2_za" type="xs:string" minOccurs="0"/>
+                <xs:element name="nazev" type="xs:string" minOccurs="0"/>
+                <xs:element name="adresa" type="AdresaType" minOccurs="0"/>
+                <xs:element name="char_os" type="CharakteristikaType"/>
+                <xs:element name="oprav_subjekt" type="OpsubIdentType" minOccurs="0"/>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="id" type="ID_TYPE"/>
+        <xs:element name="rc6" type="xs:string"/>
+        <xs:element name="rc7" type="xs:string"/>
+        <xs:element name="ico" type="xs:string"/>
+        <xs:element name="ico_doplnek" type="xs:string"/>
+        <xs:element name="bsm1_id" type="ID_TYPE" minOccurs="0"/>
+        <xs:element name="bsm2_id" type="ID_TYPE" minOccurs="0"/>    
+        <xs:element name="prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="titul_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="titul_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm1_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_prijmeni" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_jmeno" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_pred" type="xs:string" minOccurs="0"/>
+        <xs:element name="bsm2_za" type="xs:string" minOccurs="0"/>
+        <xs:element name="nazev" type="xs:string" minOccurs="0"/>
+        <xs:element name="adresa" type="AdresaType" minOccurs="0"/>
+        <xs:element name="char_os" type="CharakteristikaType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OpsubNazevType">
+    <xs:sequence>
+      <xs:element name="id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="bsm1_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="bsm2_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="nazev" type="xs:string" minOccurs="0"/>
+      <xs:element name="prijmeni" type="xs:string" minOccurs="0"/>
+      <xs:element name="jmeno" type="xs:string" minOccurs="0"/>
+      <xs:element name="titul_pred" type="xs:string" minOccurs="0"/>
+      <xs:element name="titul_za" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm1_prijmeni" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm1_jmeno" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm1_pred" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm1_za" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm2_prijmeni" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm2_jmeno" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm2_pred" type="xs:string" minOccurs="0"/>
+      <xs:element name="bsm2_za" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>  
+  <xs:complexType name="NemIdentType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="parcela" type="ParcelaType"/>
+        <xs:element name="stavba" type="StavbaType"/>
+        <xs:element name="jednotka" type="JednotkaType"/>
+        <xs:element name="pravo_stavby" type="PravoStavbyType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType> 
+  <xs:complexType name="PodilType">
+    <xs:sequence>
+      <xs:element name="citatel" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="30"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="jmenovatel" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="30"/>
+            <xs:fractionDigits value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="SekceListSekceType">
+    <xs:annotation>
+      <xs:documentation>Identifikace sekce, podporovane hodnoty: B1, C a D.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="B1"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OsNemIdentType">
+    <xs:sequence>
+      <xs:element name="jpv_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="tel_id" type="ID_TYPE" minOccurs="0"/>
+      <xs:element name="cislo_tel" type="xs:string" minOccurs="0"/>
+      <xs:element name="oprav_subjekt" type="OpsubIdentPoType" minOccurs="0"/>
+      <xs:element name="parcela" type="ParcelaType" minOccurs="0"/>
+      <xs:element name="stavba" type="StavbaType" minOccurs="0"/>
+      <xs:element name="jednotka" type="JednotkaType" minOccurs="0"/>
+      <xs:element name="pravo_stavby" type="PravoStavbyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>	
+</xs:schema>
