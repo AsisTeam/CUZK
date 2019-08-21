@@ -17,27 +17,27 @@ class OpravnenySubjektIdentifikace
 
 	public function id(): string
 	{
-		return $this->el->getElementsByTagName('id')[0] ?? '';
+		return $this->el->getElementsByTagName('id')[0]->textContent ?? '';
 	}
 
 	public function rc6(): string
 	{
-		return $this->el->getElementsByTagName('rc6')[0] ?? '';
+		return $this->el->getElementsByTagName('rc6')[0]->textContent ?? '';
 	}
 
 	public function rc7(): string
 	{
-		return $this->el->getElementsByTagName('rc7')[0] ?? '';
+		return $this->el->getElementsByTagName('rc7')[0]->textContent ?? '';
 	}
 
 	public function ico(): string
 	{
-		return $this->el->getElementsByTagName('ico')[0] ?? '';
+		return $this->el->getElementsByTagName('ico')[0]->textContent ?? '';
 	}
 
 	public function icoDoplnek(): string
 	{
-		return $this->el->getElementsByTagName('ico_doplnek')[0] ?? '';
+		return $this->el->getElementsByTagName('ico_doplnek')[0]->textContent ?? '';
 	}
 
 	public function bsm1Id(): ?string
@@ -134,6 +134,12 @@ class OpravnenySubjektIdentifikace
 	{
 		return $this->el->getElementsByTagName('adresa')[0] ?
 			new Adresa($this->el->getElementsByTagName('adresa')[0]) : null;
+	}
+
+	public function charOs(): ?CharakteristikaOsoby
+	{
+		return $this->el->getElementsByTagName('char_os')[0] ?
+			new CharakteristikaOsoby($this->el->getElementsByTagName('char_os')[0]) : null;
 	}
 
 }

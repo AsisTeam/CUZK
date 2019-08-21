@@ -44,6 +44,10 @@ final class ListVlastnictviTest  extends TestCase
 	{
 		$this->assertTextHeader($txt);
 		$this->assertTextPozemky($txt);
+		$this->assertTextBudovy($txt);
+		$this->assertTextUkony($txt);
+		$this->assertTextNabyvaciTituly($txt);
+		$this->assertTextBonity($txt);
 	}
 
 	private function assertTextHeader(Text $txt): void
@@ -112,6 +116,93 @@ final class ListVlastnictviTest  extends TestCase
 
 		// units - JEDNOTKY
 		Assert::equal([], $parcel->jednotky());
+	}
+
+	private function assertTextBudovy(Text $txt): void
+	{
+		Assert::count(0, $txt->budovy());
+	}
+
+	private function assertTextUkony(Text $txt): void
+	{
+		Assert::count(0, $txt->ukony());
+	}
+
+	private function assertTextNabyvaciTituly(Text $txt): void
+	{
+		Assert::count(1, $txt->nabyvaciTituly());
+		$nt = $txt->nabyvaciTituly()[0];
+
+		Assert::equal('', $nt->polvz());
+		Assert::equal('', $nt->rizeniE());
+
+		// nazevList - NAZEV_LIST_E
+		Assert::equal('Smlouva', $nt->nazevList()->tlist());
+		Assert::equal('kupní, o zřízení věcného břemene - bezúplatná', $nt->nazevList()->dalsiUdaje());
+		Assert::equal('', $nt->nazevList()->poradoveCisloZhotoveni());
+		Assert::equal('', $nt->nazevList()->popis());
+		Assert::equal('ze dne 12.02.2010.', $nt->nazevList()->vystavTxt());
+		Assert::equal('', $nt->nazevList()->pravMocTxt());
+		Assert::equal('', $nt->nazevList()->vykonatelnostTxt());
+		Assert::equal('Právní účinky vkladu práva ke dni 19.02.2010.', $nt->nazevList()->podaniTxt());
+		Assert::equal('', $nt->nazevList()->podanizTxt());
+		Assert::equal('', $nt->nazevList()->zplatneniTxt());
+
+		// rizeni - IDENT_RIZENI
+		Assert::equal('V', $nt->rizeni()->typRizeni());
+		Assert::equal('435', $nt->rizeni()->poradoveCislo());
+		Assert::equal('2010', $nt->rizeni()->rok());
+		Assert::equal('306', $nt->rizeni()->prares());
+
+		// opravneny subjekt - NT_PRO
+		Assert::count(1, $nt->pro());
+		$os = $nt->pro()[0];
+		// opravneny subjekt - OPRAV_SUBJEKT
+		Assert::equal('898600307', $os->id());
+		Assert::equal('740727', $os->rc6());
+		Assert::equal('4919', $os->rc7());
+		Assert::equal('Giňa', $os->prijmeni());
+		Assert::equal('Jan', $os->jmeno());
+		Assert::equal('', $os->titulPred());
+		Assert::equal('', $os->titulZa());
+		// opravneny subjekt - adresa
+		Assert::equal('', $os->adresa()->adresniMisto());
+		Assert::equal('Rynky', $os->adresa()->nazevUlice());
+		Assert::equal('1', $os->adresa()->cpCe());
+		Assert::equal('1224', $os->adresa()->cisloDomovni());
+		Assert::equal('', $os->adresa()->cisloOrientacni());
+		Assert::equal('Palkovice', $os->adresa()->castObce());
+		Assert::equal('Kopřivnice', $os->adresa()->obec());
+		Assert::equal('', $os->adresa()->mestskaCast());
+		Assert::equal('', $os->adresa()->mestskyObvod());
+		Assert::equal('11000', $os->adresa()->psc());
+		Assert::equal('Praha 1', $os->adresa()->dodaciPosta());
+		// opravneny subjekt - charOs
+		Assert::equal('2', $os->charOs()->kod());
+		Assert::equal('', $os->charOs()->zkratka());
+		Assert::equal('', $os->charOs()->zkratkaAlv());
+	}
+
+	private function assertTextBonity(Text $txt): void
+	{
+		Assert::count(3, $txt->bonity());
+		$b = $txt->bonity()[0];
+		// bonita - BON_PARCELNI_CISLO
+		Assert::equal('3531514306', $b->parcela()->id());
+		Assert::equal('', $b->parcela()->zkratka());
+		Assert::equal('', $b->parcela()->druhCis());
+		Assert::equal(' 1538', $b->parcela()->parCis());
+		Assert::equal('6', $b->parcela()->poddCis());
+		Assert::equal('807841306', $b->parcela()->telId());
+		// bonita - JINE_KU
+		Assert::equal('', $b->jineKuKod());
+		Assert::equal('', $b->jineKuNazev());
+		// bonita - BONITY_BPEJ
+		Assert::count(2, $b->bpej());
+		Assert::equal('85011', $b->bpej()[0]->kod());
+		Assert::equal(2828, $b->bpej()[0]->vymera());
+		Assert::equal('85044', $b->bpej()[1]->kod());
+		Assert::equal(24200, $b->bpej()[1]->vymera());
 	}
 
 }

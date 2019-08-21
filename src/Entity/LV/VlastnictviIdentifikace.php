@@ -35,9 +35,9 @@ class VlastnictviIdentifikace
 		return new JednotkaIdentifikace($this->el->getElementsByTagName('jednotka')[0]);
 	}
 
-	public function pravoStavby(): PravoStavby
+	public function pravoStavby(): PravoStavbyIdentifikace
 	{
-		return new PravoStavby($this->el->getElementsByTagName('pravo_stavby')[0]);
+		return new PravoStavbyIdentifikace($this->el->getElementsByTagName('pravo_stavby')[0]);
 	}
 
 }

@@ -4,7 +4,7 @@ namespace AsisTeam\CUZK\Entity\LV;
 
 use DOMElement;
 
-class PravoStavby
+class PravoStavbyIdentifikace
 {
 
 	/** @var DOMElement */

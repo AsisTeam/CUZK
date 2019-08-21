@@ -20,6 +20,7 @@ final class ParcelaIdentifikace
 		return $this->el->getElementsByTagName('id')[0] ?
 			$this->el->getElementsByTagName('id')[0]->textContent : '';
 	}
+
 	public function zkratka(): string
 	{
 		return $this->el->getElementsByTagName('zkratka')[0] ?
@@ -48,6 +49,12 @@ final class ParcelaIdentifikace
 	{
 		return $this->el->getElementsByTagName('dil_parcely')[0] ?
 			$this->el->getElementsByTagName('dil_parcely')[0]->textContent : '';
+	}
+
+	public function dil(): string
+	{
+		return $this->el->getElementsByTagName('dil')[0] ?
+			$this->el->getElementsByTagName('dil')[0]->textContent : '';
 	}
 
 	public function telId(): string

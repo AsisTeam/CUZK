@@ -151,6 +151,7 @@ class Parcela
 	public function jednotky(): array
 	{
 		$units = [];
+		/** @var DOMElement $item */
 		foreach ($this->el->getElementsByTagName('JEDNOTKY') as $item) {
 			/** @var DOMElement $u */
 			foreach ($item->getElementsByTagName('JEDNOTKA') as $u) {

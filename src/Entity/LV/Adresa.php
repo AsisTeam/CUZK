@@ -39,6 +39,12 @@ final class Adresa
 			$this->el->getElementsByTagName('cislo_orientacni')[0]->textContent : null;
 	}
 
+	public function cpCe(): ?string
+	{
+		return $this->el->getElementsByTagName('cp_ce')[0] ?
+			$this->el->getElementsByTagName('cp_ce')[0]->textContent : null;
+	}
+
 	public function castObce(): ?string
 	{
 		return $this->el->getElementsByTagName('cast_obce')[0] ?

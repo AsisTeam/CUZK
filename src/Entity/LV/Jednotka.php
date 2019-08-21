@@ -78,4 +78,22 @@ final class Jednotka
 		return $naLv->getElementsByTagName('cislo_tel')[0]->textContent ?? '';
 	}
 
+	public function naLv(): ?string
+	{
+		return $this->el->getElementsByTagName('NA_LV')[0]->textContent ?? '';
+	}
+
+	/**
+	 * @return Vlastnictvi[]
+	 */
+	public function vlastnictvi(): array
+	{
+		$own = [];
+		/** @var DOMElement $item */
+		foreach ($this->el->getElementsByTagName('VLASTNICTVI') as $item) {
+			$own[] = new Vlastnictvi($item);
+		}
+		return $own;
+	}
+
 }
