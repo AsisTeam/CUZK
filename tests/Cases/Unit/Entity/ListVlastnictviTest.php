@@ -48,6 +48,8 @@ final class ListVlastnictviTest  extends TestCase
 		$this->assertTextUkony($txt);
 		$this->assertTextNabyvaciTituly($txt);
 		$this->assertTextBonity($txt);
+		$this->assertTextParcelyZjednoduseneEvidence($txt);
+		$this->assertTextRizeni($txt);
 	}
 
 	private function assertTextHeader(Text $txt): void
@@ -203,6 +205,16 @@ final class ListVlastnictviTest  extends TestCase
 		Assert::equal(2828, $b->bpej()[0]->vymera());
 		Assert::equal('85044', $b->bpej()[1]->kod());
 		Assert::equal(24200, $b->bpej()[1]->vymera());
+	}
+
+	private function assertTextParcelyZjednoduseneEvidence(Text $txt): void
+	{
+		Assert::count(0, $txt->parcelyZjednoduseneEvidence());
+	}
+
+	private function assertTextRizeni(Text $txt): void
+	{
+		Assert::count(0, $txt->rizeni());
 	}
 
 }

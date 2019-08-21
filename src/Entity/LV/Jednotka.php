@@ -4,7 +4,7 @@ namespace AsisTeam\CUZK\Entity\LV;
 
 use DOMElement;
 
-final class Jednotka
+class Jednotka
 {
 
 	/** @var DOMElement */

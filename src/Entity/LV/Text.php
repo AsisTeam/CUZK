@@ -4,7 +4,7 @@ namespace AsisTeam\CUZK\Entity\LV;
 
 use DOMElement;
 
-final class Text
+class Text
 {
 
 	/** @var DOMElement */
@@ -114,6 +114,40 @@ final class Text
 		/** @var DOMElement $item */
 		foreach ($b->getElementsByTagName('F_BONITA') as $item) {
 			$list[] = new Bonita($item);
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @return ZdrojParcelyZjednoduseneEvidence[]
+	 */
+	public function parcelyZjednoduseneEvidence(): array
+	{
+		$list = [];
+
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('PARCELY_ZE')[0];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('ZDROJ_PARCEL_ZE') as $item) {
+			$list[] = new ZdrojParcelyZjednoduseneEvidence($item);
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @return Rizeni[]
+	 */
+	public function rizeni(): array
+	{
+		$list = [];
+
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('D1_UPOZORNENI')[0];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('SEZNAM_RIZENI') as $item) {
+			$list[] = new Rizeni($item);
 		}
 
 		return $list;
