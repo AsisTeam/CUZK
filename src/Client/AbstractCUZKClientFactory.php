@@ -47,7 +47,7 @@ abstract class AbstractCUZKClientFactory
 				]
 			);
 
-			$header = $this->createHeader(
+			$header = self::createHeader(
 				$this->test ? self::TRIAL_USER : $user,
 				$this->test ? self::TRIAL_PASS : $pass
 			);
@@ -59,7 +59,7 @@ abstract class AbstractCUZKClientFactory
 		}
 	}
 
-	private function createHeader(string $user, string $pass): SoapHeader
+	public static function createHeader(string $user, string $pass): SoapHeader
 	{
 		$auth           = new stdClass();
 		$auth->Username = new SoapVar($user, XSD_STRING, '', self::WSS_NS, '', self::WSS_NS);

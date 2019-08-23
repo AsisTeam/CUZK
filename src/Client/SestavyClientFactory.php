@@ -13,7 +13,7 @@ final class SestavyClientFactory extends AbstractCUZKClientFactory
 	/** @var string */
 	private $pass;
 
-	public function __construct(string $user, string $pass, bool $test = true)
+	public function __construct(string $user, string $pass = '', bool $test = true)
 	{
 		$this->user = $user;
 		$this->pass = $pass;

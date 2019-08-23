@@ -22,6 +22,12 @@ abstract class AbstractCUZKClient
 		$this->client = $client;
 	}
 
+	public function setCredentials(string $user, string $pass): void
+	{
+		$header = AbstractCUZKClientFactory::createHeader($user, $pass);
+		$this->client->__setSoapHeaders([$header]);
+	}
+
 	/**
 	 * @param mixed[] $params
 	 */

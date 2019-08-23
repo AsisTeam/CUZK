@@ -30,6 +30,18 @@ class CiselnikClientTest extends TestCase
 		Assert::true(count($countries) > 240); // on 8.8.219 there was 249 countries in the World
 	}
 
+	public function testListCountriesProductionCredentials(): void
+	{
+		$cc = (new CiselnikClientFactory('', '', false))->create();
+		// you may set credentials by passing it to factory, or setting it like below
+		$prodUser = 'user'; // fill your own production username
+		$prodPass = 'pass'; // fill your own production password
+		$cc->setCredentials($prodUser, $prodPass);
+
+		$countries = $cc->listCountries();
+		Assert::true(count($countries) > 240); // on 8.8.219 there was 249 countries in the World
+	}
+
 }
 
 (new CiselnikClientTest())->run();

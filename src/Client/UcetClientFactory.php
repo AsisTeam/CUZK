@@ -2,10 +2,10 @@
 
 namespace AsisTeam\CUZK\Client;
 
-final class CiselnikClientFactory extends AbstractCUZKClientFactory
+final class UcetClientFactory extends AbstractCUZKClientFactory
 {
 
-	private const WSDL = 'ciselnik_v28.wsdl';
+	private const WSDL = 'ucet_v28.wsdl';
 
 	/** @var string */
 	private $user;
@@ -21,11 +21,9 @@ final class CiselnikClientFactory extends AbstractCUZKClientFactory
 		parent::__construct($test);
 	}
 
-	public function create(): CiselnikClient
+	public function create(): UcetClient
 	{
-		return new CiselnikClient(
-			$this->createSoap(self::WSDL, $this->user, $this->pass)
-		);
+		return new UcetClient($this->createSoap(self::WSDL, $this->user, $this->pass));
 	}
 
 }

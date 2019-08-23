@@ -4,6 +4,7 @@ namespace AsisTeam\CUZK\DI;
 
 use AsisTeam\CUZK\Client\CiselnikClientFactory;
 use AsisTeam\CUZK\Client\SestavyClientFactory;
+use AsisTeam\CUZK\Client\UcetClientFactory;
 use Nette\DI\CompilerExtension;
 
 final class CUZKExtension extends CompilerExtension
@@ -29,6 +30,9 @@ final class CUZKExtension extends CompilerExtension
 
 		$builder->addDefinition($this->prefix('client_factories.sestavy'))
 			->setFactory(SestavyClientFactory::class, [$config['user'], $config['pass'], $config['test']]);
+
+		$builder->addDefinition($this->prefix('client_factories.ucet'))
+			->setFactory(UcetClientFactory::class, [$config['user'], $config['pass'], $config['test']]);
 	}
 
 }

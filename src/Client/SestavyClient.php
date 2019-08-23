@@ -38,7 +38,7 @@ final class SestavyClient extends AbstractCUZKClient
 	 */
 	public function getReports(): array
 	{
-		$resp    = $this->call(self::REPORT_FIND_ALL, []);
+		$resp = $this->call(self::REPORT_FIND_ALL, []);
 
 		return $this->extractReports($resp);
 	}
