@@ -918,7 +918,7 @@
 			                                    </xs:sequence>
 			                                  </xs:complexType>
 			                                </xs:element>
-                                                        <xs:element name="JPV_OPRAV_PRO_NEM" minOccurs="0">
+                                            <xs:element name="JPV_OPRAV_PRO_NEM" minOccurs="0">
 			                                  <xs:complexType>
 			                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
 			                                      <xs:element name="JPV_PRO_NEM">
@@ -944,7 +944,7 @@
 			                                    </xs:sequence>
 			                                  </xs:complexType>
 			                                </xs:element>
-                                                        <xs:element name="JPV_POVIN_K_NEM" minOccurs="0">
+                                            <xs:element name="JPV_POVIN_K_NEM" minOccurs="0">
 			                                  <xs:complexType>
 			                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
 			                                      <xs:element name="JPV_K_NEM">

@@ -153,4 +153,63 @@ class Text
 		return $list;
 	}
 
+	/**
+	 * @return ZmenaPV[]
+	 */
+	public function zmeny(): array
+	{
+		$list = [];
+
+		if ($this->el->getElementsByTagName('ZMENY_PV')->length === 0) {
+			return $list;
+		}
+
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('ZMENY_PV')[0];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('ZMENA_PV') as $item) {
+			$list[] = new ZmenaPV($item);
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @return Vztah[]
+	 */
+	public function vztahy(): array
+	{
+		$list = [];
+
+		$properPath = '/VypisZKatastruNemovitosti/LIST_TEXT/TEXTY/VLASTNICI_JINI_OPRAVNENI/TYP_VZTAHU';
+
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('VLASTNICI_JINI_OPRAVNENI')[0];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('TYP_VZTAHU') as $item) {
+			if ($item->getNodePath() !== $properPath) {
+				continue;
+			}
+			$list[] = new Vztah($item);
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @return JinaPravaSekce[]
+	 */
+	public function jinaPrava(): array
+	{
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('JINA_PRAVA')[0];
+		$list = [];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('SEKCE_LIST') as $item) {
+			$list[] = new JinaPravaSekce($item);
+		}
+
+		return $list;
+	}
+
 }

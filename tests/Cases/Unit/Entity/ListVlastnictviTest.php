@@ -50,6 +50,8 @@ final class ListVlastnictviTest  extends TestCase
 		$this->assertTextBonity($txt);
 		$this->assertTextParcelyZjednoduseneEvidence($txt);
 		$this->assertTextRizeni($txt);
+		$this->assertTextVztahy($txt);
+		$this->assertTextJinaPrava($txt);
 	}
 
 	private function assertTextHeader(Text $txt): void
@@ -215,6 +217,99 @@ final class ListVlastnictviTest  extends TestCase
 	private function assertTextRizeni(Text $txt): void
 	{
 		Assert::count(0, $txt->rizeni());
+	}
+
+	private function assertTextVztahy(Text $txt): void
+	{
+		Assert::count(1, $txt->vztahy());
+		$rel = $txt->vztahy()[0];
+		// vztah - TYP_VZTAHU
+		Assert::equal('Vlastnické právo', $rel->typ());
+		Assert::count(1, $rel->subjekty());
+		// subjekt - SUBJEKT
+		$subj = $rel->subjekty()[0];
+		Assert::equal('OFO', $subj->opravnenySubjektTyp());
+		// subjekt - SUBJEKT - VLA_IDENT
+		Assert::equal('898600307', $subj->vlastnictvi()->opravnenySubjekt()->id());
+		Assert::equal('Giňa', $subj->vlastnictvi()->opravnenySubjekt()->prijmeni());
+		Assert::equal('Jan', $subj->vlastnictvi()->opravnenySubjekt()->jmeno());
+		Assert::equal('Kopřivnice', $subj->vlastnictvi()->opravnenySubjekt()->adresa()->obec());
+		// subjekt - SUBJEKT - OPSUB_ZKRATKA
+		Assert::equal('2', $subj->charOs()->kod());
+		// subjekt - SUBJEKT - OPSUB_NAZEV
+		Assert::equal('898600307', $subj->opsubNazev()->id());
+		Assert::equal('Giňa', $subj->opsubNazev()->prijmeni());
+		Assert::equal('Jan', $subj->opsubNazev()->jmeno());
+		// subjekt - SUBJEKT - OPSUB_IDENT
+		Assert::equal('898600307', $subj->opsubIdentifikace()->id());
+		Assert::equal('740727', $subj->opsubIdentifikace()->rc6());
+		Assert::equal('4919', $subj->opsubIdentifikace()->rc7());
+		// subjekt - SUBJEKT - PODIL
+		Assert::equal('?/?', $subj->podil());
+	}
+
+	private function assertTextJinaPrava(Text $txt): void
+	{
+		Assert::count(3, $txt->jinaPrava());
+		Assert::equal('B1', $txt->jinaPrava()[0]->typ());
+		Assert::equal('C', $txt->jinaPrava()[1]->typ());
+		Assert::equal('D', $txt->jinaPrava()[2]->typ());
+
+		Assert::count(4, $txt->jinaPrava()[1]->jinePravniVztahy());
+		$jpv = $txt->jinaPrava()[1]->jinePravniVztahy()[0];
+		// JPV
+		Assert::equal('390156306', $jpv->hjpvId());
+		Assert::equal('Věcné břemeno chůze a jízdy', $jpv->typ());
+		Assert::equal('', $jpv->poradiDatum());
+		Assert::equal('AAAA AAAAA AAAAAA AAAAAA AAAAAA A AAAA AAAA39566267', $jpv->poradiText());
+		// JPV popisy - JPV_POPISY
+		Assert::count(1, $jpv->popisy());
+		Assert::equal('( AAA AAAAAAA );58711994', $jpv->popisy()[0]->popis());
+		Assert::count(0, $jpv->popisy()[0]->rizeni());
+		// JPV opravyProOs - JPV_OPRAV_PRO_OS
+		Assert::count(1, $jpv->opravyProOs());
+		Assert::equal('', $jpv->opravyProOs()[0]->podilPohledavka());
+		Assert::equal('', $jpv->opravyProOs()[0]->proIdentOs()->jpvId());
+		// JPV opravyProNem - JPV_OPRAV_PRO_NEM
+		Assert::count(4, $jpv->opravyProNem());
+		Assert::equal('738694306', $jpv->opravyProNem()[0]->jpvId());
+		Assert::equal('2851259306', $jpv->opravyProNem()[0]->parcela()->id());
+		Assert::equal('', $jpv->opravyProNem()[0]->parcela()->zkratka());
+		Assert::equal('', $jpv->opravyProNem()[0]->parcela()->druhCis());
+		Assert::equal('1542', $jpv->opravyProNem()[0]->parcela()->parCis());
+		Assert::equal('674651306', $jpv->opravyProNem()[0]->parcela()->telId());
+		// JPV povinOs - JPV_POVIN_K_OS
+		Assert::count(1, $jpv->povinOs());
+		Assert::equal('', $jpv->povinOs()[0]->jpvId());
+		// JPV povinNem - JPV_POVIN_K_NEM
+		Assert::count(4, $jpv->povinNem());
+		Assert::equal('738694306', $jpv->povinNem()[0]->jpvId());
+		Assert::equal('2851264306', $jpv->povinNem()[0]->parcela()->id());
+		Assert::equal('', $jpv->povinNem()[0]->parcela()->zkratka());
+		Assert::equal('', $jpv->povinNem()[0]->parcela()->druhCis());
+		Assert::equal('1545', $jpv->povinNem()[0]->parcela()->parCis());
+		Assert::equal('807841306', $jpv->povinNem()[0]->parcela()->telId());
+		// JPV listiny - JPV_LISTINY
+		Assert::count(1, $jpv->listiny());
+		$listina = $jpv->listiny()[0];
+		Assert::equal('965792306', $listina->id());
+		Assert::equal('', $listina->popis());
+		// JPV listina nazevList
+		Assert::equal('Smlouva', $listina->nazevList()->tlist());
+		Assert::equal('kupní, o zřízení věcného břemene - bezúplatná', $listina->nazevList()->dalsiUdaje());
+		Assert::equal('', $listina->nazevList()->poradoveCisloZhotoveni());
+		Assert::equal('', $listina->nazevList()->popis());
+		Assert::equal('ze dne 12.02.2010.', $listina->nazevList()->vystavTxt());
+		Assert::equal('', $listina->nazevList()->pravMocTxt());
+		Assert::equal('Právní účinky vkladu práva ke dni 19.02.2010.', $listina->nazevList()->podaniTxt());
+		Assert::equal('', $listina->nazevList()->vykonatelnostTxt());
+		Assert::equal('', $listina->nazevList()->podanizTxt());
+		Assert::equal('', $listina->nazevList()->zplatneniTxt());
+		// JPV listina rizeni
+		Assert::equal('V', $listina->rizeni()->typRizeni());
+		Assert::equal('435', $listina->rizeni()->poradoveCislo());
+		Assert::equal('2010', $listina->rizeni()->rok());
+		Assert::equal('306', $listina->rizeni()->prares());
 	}
 
 }
