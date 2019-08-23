@@ -52,6 +52,7 @@ final class ListVlastnictviTest  extends TestCase
 		$this->assertTextRizeni($txt);
 		$this->assertTextVztahy($txt);
 		$this->assertTextJinaPrava($txt);
+		$this->assertTextPravaStavby($txt);
 	}
 
 	private function assertTextHeader(Text $txt): void
@@ -310,6 +311,11 @@ final class ListVlastnictviTest  extends TestCase
 		Assert::equal('435', $listina->rizeni()->poradoveCislo());
 		Assert::equal('2010', $listina->rizeni()->rok());
 		Assert::equal('306', $listina->rizeni()->prares());
+	}
+
+	private function assertTextPravaStavby(Text $txt): void
+	{
+		Assert::count(0, $txt->pravaStavby());
 	}
 
 }

@@ -212,4 +212,36 @@ class Text
 		return $list;
 	}
 
+	/**
+	 * @return PravoStavby[]
+	 */
+	public function pravaStavby(): array
+	{
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('PRAVA_STAVBY')[0];
+		$list = [];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('PRAVO_STAVBY') as $item) {
+			$list[] = new PravoStavby($item);
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @return JednotkaInfo[]
+	 */
+	public function jendotky(): array
+	{
+		/** @var DOMElement $b */
+		$b = $this->el->getElementsByTagName('JEDNOTKY')[0];
+		$list = [];
+		/** @var DOMElement $item */
+		foreach ($b->getElementsByTagName('JEDNOTKA') as $item) {
+			$list[] = new JednotkaInfo($item);
+		}
+
+		return $list;
+	}
+
 }
