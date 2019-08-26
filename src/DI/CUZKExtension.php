@@ -7,7 +7,7 @@ use AsisTeam\CUZK\Client\SestavyClientFactory;
 use AsisTeam\CUZK\Client\UcetClientFactory;
 use Nette\DI\CompilerExtension;
 
-final class CUZKExtension extends CompilerExtension
+class CUZKExtension extends CompilerExtension
 {
 
 	/** @var mixed[] */
