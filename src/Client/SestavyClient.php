@@ -3,6 +3,7 @@
 namespace AsisTeam\CUZK\Client;
 
 use AsisTeam\CUZK\Entity\Report;
+use AsisTeam\CUZK\Exception\LogicalException;
 use AsisTeam\CUZK\Exception\Runtime\RequestException;
 use AsisTeam\CUZK\Exception\Runtime\ResponseException;
 use DateTime;
@@ -31,6 +32,20 @@ final class SestavyClient extends AbstractCUZKClient
 	public function __construct(SoapClient $client)
 	{
 		parent::__construct($client);
+	}
+
+	/**
+	 * @param Report[] $reports
+	 */
+	public function getXmlReport(array $reports): Report
+	{
+		foreach ($reports as $r) {
+			if ($r->getFormat() === Report::FORMAT_XML) {
+				return $r;
+			}
+		}
+
+		throw new LogicalException('No xml report found');
 	}
 
 	/**
@@ -63,7 +78,12 @@ final class SestavyClient extends AbstractCUZKClient
 	/**
 	 * @return Report[]
 	 */
-	public function generateByLvId(string $lvId, ?DateTime $date = null, bool $appendXml = false): array
+	public function generateByLvId(
+		string $lvId,
+		string $format = Report::FORMAT_XML,
+		?DateTime $date = null,
+		bool $appendXml = false
+	): array
 	{
 		$this->assertNonEmpty($lvId, self::PARAM_LV_ID);
 
@@ -74,7 +94,7 @@ final class SestavyClient extends AbstractCUZKClient
 					'format' => Report::FORMAT_PDF,
 					'lvId'   => $lvId,
 				],
-				$this->getOptionalParams($date, $appendXml)
+				$this->getGenerateOptions($format, $date, $appendXml)
 			)
 		);
 
@@ -87,6 +107,7 @@ final class SestavyClient extends AbstractCUZKClient
 	public function generateByCodeAndLvNo(
 		string $codeKU,
 		string $lvNo,
+		string $format = Report::FORMAT_XML,
 		?DateTime $date = null,
 		bool $appendXml = false
 	): array
@@ -102,7 +123,7 @@ final class SestavyClient extends AbstractCUZKClient
 					'katastrUzemiKod' => $codeKU,
 					'lvCislo'         => $lvNo,
 				],
-				$this->getOptionalParams($date, $appendXml)
+				$this->getGenerateOptions($format, $date, $appendXml)
 			)
 		);
 
@@ -115,6 +136,7 @@ final class SestavyClient extends AbstractCUZKClient
 	public function generateByCodeAndOsId(
 		string $codeKU,
 		string $osId,
+		string $format = Report::FORMAT_XML,
 		?DateTime $date = null,
 		bool $appendXml = false
 	): array
@@ -130,7 +152,7 @@ final class SestavyClient extends AbstractCUZKClient
 					'katastrUzemiKod' => $codeKU,
 					'osId'            => $osId,
 				],
-				$this->getOptionalParams($date, $appendXml)
+				$this->getGenerateOptions($format, $date, $appendXml)
 			)
 		);
 
@@ -162,16 +184,21 @@ final class SestavyClient extends AbstractCUZKClient
 	/**
 	 * @return mixed[]
 	 */
-	private function getOptionalParams(?DateTime $date = null, bool $appendXml = false): array
+	private function getGenerateOptions(
+		string $format = Report::FORMAT_XML,
+		?DateTime $date = null,
+		bool $appendXml = false
+	): array
 	{
-		$params = [];
+		$params = ['format' => $format];
 
 		if ($date !== null) {
 			$this->assertDate($date);
 			$params['datumK'] = $date->format(DATE_RFC3339);
 		}
 
-		if ($appendXml) {
+		// appending XML is allowed only to PDF
+		if ($format === Report::FORMAT_PDF && $appendXml) {
 			$params['pripojitXML'] = self::ENUM_TRUE;
 		}
 

@@ -28,7 +28,7 @@ class SestavyClientTest extends TestCase
 			)
 		);
 
-		$reports = $sc->generateByLvId('807841306');
+		$reports = $sc->generateByLvId('807841306', Report::FORMAT_PDF);
 		Assert::count(1, $reports);
 		$r = $reports[0];
 
@@ -59,7 +59,7 @@ class SestavyClientTest extends TestCase
 			)
 		);
 
-		$reports = $sc->generateByLvId('807841306', new DateTime('2019-08-09'), true);
+		$reports = $sc->generateByLvId('807841306', Report::FORMAT_PDF, new DateTime('2019-08-09'), true);
 		Assert::count(2, $reports);
 
 		$pdf = $reports[0];
@@ -70,7 +70,8 @@ class SestavyClientTest extends TestCase
 		Assert::equal(85901974011, $pdf->getSubId());
 		Assert::null($pdf->getMasterId());
 
-		$xml = $reports[1];
+		$xml = $sc->getXmlReport($reports);
+		Assert::same($xml, $reports[1]);
 		Assert::equal(85901974011, $xml->getId());
 		Assert::equal('Výpis z katastru', $xml->getName());
 		Assert::equal('čeká', $xml->getStatus());
@@ -95,7 +96,7 @@ class SestavyClientTest extends TestCase
 			)
 		);
 
-		$reports = $sc->generateByCodeAndLvNo('123456', '987');
+		$reports = $sc->generateByCodeAndLvNo('123456', '987', Report::FORMAT_PDF);
 		Assert::count(1, $reports);
 	}
 
@@ -115,7 +116,7 @@ class SestavyClientTest extends TestCase
 			)
 		);
 
-		$reports = $sc->generateByCodeAndOsId('123456', '987');
+		$reports = $sc->generateByCodeAndOsId('123456', '987', Report::FORMAT_PDF);
 		Assert::count(1, $reports);
 	}
 

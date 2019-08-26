@@ -31,9 +31,9 @@ You may then use this `ID` for querying this specific report and it's content on
 - deleteReport(int $id): void
 
 
-- generateByLvId(string $lvId, ?DateTime $date = null, bool $appendXml = false): Report[]
-- generateByCodeAndLvNo(string $codeKU, string $lvNo, ?DateTime $date = null, bool $appendXml = false): Report[]
-- generateByCodeAndOsId(string $codeKU, string $osId, ?DateTime $date = null, bool $appendXml = false): Report[]
+- generateByLvId(string $lvId, $format = Report::FORMAT_XML, '?DateTime $date = null, bool $appendXml = false): Report[]
+- generateByCodeAndLvNo(string $codeKU, string $lvNo, $format = Report::FORMAT_XML, ?DateTime $date = null, bool $appendXml = false): Report[]
+- generateByCodeAndOsId(string $codeKU, string $osId, $format = Report::FORMAT_XML, ?DateTime $date = null, bool $appendXml = false): Report[]
 
 ___
 
@@ -44,6 +44,15 @@ Param Notes:
 - __osId__: ID oprávněného subjektu (nebo master tohoto OS)
 - __date__: Datum, ke kterému bude sestava vygenerována.
 - __appendXml__: V případě, že formát je PDF, operace vrátí současně sestavu i v XML formátu bez dalšího poplatku.
+
+___
+
+Format Notes:
+
+You may choose among multiple output file types when generating the report. 
+The default format is `Report::FORMAT_XML`.
+If you require the PDF, use Report::FORMAT_PDF instead. When generating report in PDF the `$appendXml` param may be used (when using other formats `$appendXml` is ignored).
+When `$appendXml` is used it the free of charge XML report is added to PDF report you are charged for. 
 
 ### List Vlastnictvi entity
 
@@ -58,12 +67,19 @@ use AsisTeam\CUZK\Entity\ListVlastnictvi;
 
 // 'WSTEST' and 'WSHESLO' are trial credentials
 $client = (new CiselnikClientFactory('WSTEST', 'WSHESLO', true)->create();
+
+// generates just XML version
+$reportRequests = $client->generateByLvId('807841306')
+// $reportRequests[0] contains XML file info
+
 // generates both the PDF and XML versions
-$reportRequests = $client->generateByLvId('807841306', null, true)
-// report request should contain 2 items
-
-
-sleep(10); // wait some time for CUZK server to generate the pdf
+$reportRequests = $client->generateByLvId('807841306', Report::FORMAT_PDF, null, true)
+// report request should contain 2 items 
+// $reportRequests[0] contains PDF file info
+// $reportRequests[1] contains XML file info
+ 
+// wait some time for CUZK server to generate the reports
+sleep(10);
 
 // save the pdf file
 $reportPdf = $client->getReport($reportRequests[0]->getId());
@@ -71,7 +87,8 @@ echo 'The charged price for generating the reports was: ' . $reportPdf->getPrice
 file_put_contents($reportPdf->getId().'.pdf', $reportPdf->getContent());
 
 // read the xml
-$reportXml = $client->getReport($reportRequests[1]->getId());
+$xml = $client->getXmlReport($reportRequests);
+$reportXml = $client->getReport($xml->getId);
 $lv = ListVlastnictvi($reportXml->getContent());
 echo 'Vytvoreno:' . $lv->vytvoreno();
 foreach ($i => $lv->texty() as $txt) {

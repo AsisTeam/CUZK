@@ -5,6 +5,7 @@ namespace AsisTeam\CUZK\Tests\Cases\Integration\Client;
 use AsisTeam\CUZK\Client\AbstractCUZKClientFactory;
 use AsisTeam\CUZK\Client\SestavyClient;
 use AsisTeam\CUZK\Client\SestavyClientFactory;
+use AsisTeam\CUZK\Entity\Report;
 use DateTime;
 use Tester\Assert;
 use Tester\Environment;
@@ -41,7 +42,7 @@ class SestavyClientTest extends TestCase
 
 	public function testGenerateByLvIdAppendXml(): void
 	{
-		$reports = $this->client->generateByLvId('807841306', new DateTime('2019-01-01'), true);
+		$reports = $this->client->generateByLvId('807841306', Report::FORMAT_PDF, new DateTime('2019-01-01'), true);
 		Assert::count(2, $reports);
 	}
 
